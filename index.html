@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space-Comm Weekly Sales Report - W/C 25 Jun 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #16223b;
+    --navy-dark: #0d1826;
+    --navy-light: #1e3254;
+    --navy-card: #0d1e35;
+    --pink: #d40075;
+    --blue: #0093d3;
+    --grey: #809499;
+    --off-white: #f5f6f8;
+    --border: #1a4a7a;
+    --text-muted: #6b8099;
+  }
+
+  body {
+    background: var(--navy-dark);
+    color: var(--off-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .logo-area h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: #fff;
+  }
+
+  .logo-area .tagline {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-top: 2px;
+  }
+
+  .report-meta {
+    text-align: right;
+  }
+
+  .report-meta .week-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .report-meta .report-date {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ─── MAIN WRAPPER ─── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 60px;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 14px;
+    margin-top: 40px;
+  }
+
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  /* ─── KPI GRID ─── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .kpi-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+
+  .kpi-card.highlight {
+    border-color: var(--pink);
+    background: linear-gradient(135deg, #1a0f20 0%, #1e1230 100%);
+  }
+
+  .kpi-card .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .kpi-card .kpi-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .kpi-card.highlight .kpi-value {
+    color: var(--pink);
+  }
+
+  .kpi-card .kpi-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .kpi-card .kpi-sub strong {
+    color: var(--blue);
+  }
+
+  /* ─── TARGET PROGRESS ─── */
+  .target-bar-wrap {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+
+  .target-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .target-bar-header .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .target-bar-header .target-pct {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .progress-track {
+    background: var(--navy-light);
+    border-radius: 6px;
+    height: 10px;
+    position: relative;
+    overflow: visible;
+  }
+
+  .progress-confirmed {
+    background: var(--pink);
+    height: 10px;
+    border-radius: 6px 0 0 6px;
+    width: 9.9%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .progress-pipeline {
+    background: var(--blue);
+    height: 10px;
+    width: 9.2%;
+    position: absolute;
+    top: 0;
+    left: 9.9%;
+    opacity: 0.6;
+  }
+
+  .progress-labels {
+    display: flex;
+    gap: 24px;
+    margin-top: 10px;
+  }
+
+  .prog-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .dot.pink { background: var(--pink); }
+  .dot.blue { background: var(--blue); opacity: 0.7; }
+  .dot.grey { background: var(--navy-light); }
+
+  /* ─── L7D SECTION ─── */
+  .l7d-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    background: var(--pink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .badge.blue { background: var(--blue); }
+  .badge.green { background: #1a8a4a; }
+
+  .movement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .movement-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+
+  .movement-card.won {
+    border-color: #1a8a4a;
+    background: linear-gradient(135deg, #0a1f14 0%, #0d2318 100%);
+  }
+
+  .movement-card .mc-stage {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .movement-card .mc-stage.discovery { color: var(--blue); }
+  .movement-card .mc-stage.proposal { color: #f4a01c; }
+  .movement-card .mc-stage.negotiation { color: #a87ef4; }
+  .movement-card .mc-stage.won-label { color: #3cd97a; }
+  .movement-card .mc-stage.engagement { color: var(--grey); }
+  .movement-card .mc-stage.regression { color: var(--pink); }
+
+  .movement-card .deal-list {
+    list-style: none;
+  }
+
+  .movement-card .deal-list li {
+    font-size: 13px;
+    color: var(--off-white);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .movement-card .deal-list li:last-child { border-bottom: none; }
+
+  .deal-name { flex: 1; }
+
+  .deal-amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .deal-amount.green { color: #3cd97a; }
+
+  .won-deal {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .won-amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #3cd97a;
+    margin-top: 4px;
+  }
+
+  .won-owner {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* ─── FUNNEL ─── */
+  .funnel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+
+  .funnel-table th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .funnel-table td {
+    padding: 12px 14px;
+    vertical-align: middle;
+  }
+
+  .funnel-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .funnel-table tr:last-child { border-bottom: none; }
+
+  .funnel-table tbody tr:hover {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .stage-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .stage-pill.cold { background: rgba(128,148,153,0.15); color: var(--grey); }
+  .stage-pill.engagement { background: rgba(0,147,211,0.12); color: var(--blue); }
+  .stage-pill.autumn { background: rgba(168,126,244,0.12); color: #a87ef4; }
+  .stage-pill.discovery { background: rgba(244,160,28,0.12); color: #f4a01c; }
+  .stage-pill.proposal { background: rgba(0,147,211,0.2); color: #4db8e8; }
+  .stage-pill.contract { background: rgba(212,0,117,0.15); color: #ff6ab8; }
+  .stage-pill.won { background: rgba(60,217,122,0.15); color: #3cd97a; }
+
+  .value-cell {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .count-cell {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--off-white);
+  }
+
+  .bar-cell { width: 200px; }
+
+  .mini-bar-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .mini-bar-fill {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--blue);
+  }
+
+  .mini-bar-fill.pink { background: var(--pink); }
+  .mini-bar-fill.green { background: #3cd97a; }
+
+  /* ─── TEAM TABLE ─── */
+  .team-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+
+  .team-table th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .team-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+
+  .team-table tr:last-child td { border-bottom: none; }
+
+  .owner-name {
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+  }
+
+  .activity-pips {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .pip {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .pip.pink { background: var(--pink); }
+
+  .activity-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .activity-num.leader { color: var(--blue); }
+
+  /* ─── BRANDS SECTION ─── */
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .brand-column {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+  }
+
+  .brand-column h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-list {
+    list-style: none;
+  }
+
+  .brand-list li {
+    font-size: 12px;
+    color: var(--off-white);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-list li:last-child { border-bottom: none; }
+
+  .brand-val {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  /* ─── NOTICE ─── */
+  .notice-box {
+    background: rgba(0,147,211,0.07);
+    border: 1px solid rgba(0,147,211,0.25);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--off-white);
+    line-height: 1.7;
+  }
+
+  .notice-box strong { color: var(--blue); }
+
+  .missing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .missing-item {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--off-white);
+  }
+
+  .missing-item .mi-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .missing-item .mi-why {
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+
+  /* ─── FOOTER ─── */
+  .report-footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .footer-brand {
+    font-weight: 600;
+    color: var(--grey);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .main { padding: 20px 20px 40px; }
+    .site-header { padding: 16px 20px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .movement-grid { grid-template-columns: 1fr; }
+    .brands-grid { grid-template-columns: 1fr; }
+    .missing-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <div class="logo-area">
+    <h1>Space-Comm Expo Europe</h1>
+    <div class="tagline">ACCESS GRANTED.</div>
+  </div>
+  <div class="report-meta">
+    <div class="week-label">Weekly Sales Report &mdash; W/C 25 June 2026</div>
+    <div class="report-date">Pipeline: Space-Comm Expo Europe 2027 &nbsp;&middot;&nbsp; ExCeL London, 24-25 Feb 2027 &nbsp;&middot;&nbsp; Generated 25 Jun 2026</div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- ─── KPIs ─── -->
+  <div class="section-label">Pipeline at a glance</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Confirmed Revenue</div>
+      <div class="kpi-value">£238k</div>
+      <div class="kpi-sub">23 exhibitors booked</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Total Pipeline Value</div>
+      <div class="kpi-value">£460k</div>
+      <div class="kpi-sub"><strong>200 deals</strong> across all stages</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Hot Pipeline</div>
+      <div class="kpi-value">£93k</div>
+      <div class="kpi-sub">Proposal, Contract &amp; Discovery stages</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Moved Stages L7D</div>
+      <div class="kpi-value">14</div>
+      <div class="kpi-sub">Deals with genuine stage movement</div>
+    </div>
+  </div>
+
+  <!-- ─── TARGET PROGRESS ─── -->
+  <div class="target-bar-wrap">
+    <div class="target-bar-header">
+      <div class="label">Revenue Target Progress</div>
+      <div class="target-pct">£238,070 confirmed &nbsp;/&nbsp; £2,400,000 target &nbsp;&nbsp;<span style="color:var(--pink);font-size:18px;">9.9%</span></div>
+    </div>
+    <div class="progress-track">
+      <div class="progress-confirmed"></div>
+      <div class="progress-pipeline"></div>
+    </div>
+    <div class="progress-labels">
+      <div class="prog-label"><div class="dot pink"></div> Confirmed / Closed Won (9.9%)</div>
+      <div class="prog-label"><div class="dot blue"></div> Hot pipeline - Proposal + Contract (9.2%)</div>
+      <div class="prog-label"><div class="dot grey"></div> Remaining target</div>
+    </div>
+  </div>
+
+  <!-- ─── L7D MOVEMENTS ─── -->
+  <div class="section-label" style="margin-top:44px;">This week's movement &mdash; L7D stage changes</div>
+  <div class="l7d-header">
+    <h2>14 deals moved stages between 18&ndash;25 June</h2>
+    <span class="badge green">1 NEW CLOSE</span>
+    <span class="badge blue">5 INTO DISCOVERY</span>
+  </div>
+
+  <div class="movement-grid">
+
+    <!-- CLOSED WON -->
+    <div class="movement-card won">
+      <div class="mc-stage won-label">&#10003; Closed Won</div>
+      <div class="won-deal">OHB SE</div>
+      <div class="won-amount">£18,773</div>
+      <div class="won-owner">Owner: Christie Day &nbsp;&middot;&nbsp; 24 Jun 2026</div>
+    </div>
+
+    <!-- DISCOVERY CALL BOOKED -->
+    <div class="movement-card">
+      <div class="mc-stage discovery">Discovery Call Booked</div>
+      <ul class="deal-list">
+        <li><span class="deal-name">Datalink Electronics</span><span class="deal-amount">TBC</span></li>
+        <li><span class="deal-name">Marks &amp; Clerk</span><span class="deal-amount">TBC</span></li>
+        <li><span class="deal-name">Keysight</span><span class="deal-amount">£10,000</span></li>
+        <li><span class="deal-name">Framatome Ltd</span><span class="deal-amount">TBC</span></li>
+        <li><span class="deal-name">Space Computer</span><span class="deal-amount">TBC</span></li>
+      </ul>
+    </div>
+
+    <!-- PROPOSAL SENT -->
+    <div class="movement-card">
+      <div class="mc-stage proposal">Proposal Sent</div>
+      <ul class="deal-list">
+        <li><span class="deal-name">Howden Specialty</span><span class="deal-amount">TBC</span></li>
+        <li><span class="deal-name">Indra UK</span><span class="deal-amount">TBC</span></li>
+      </ul>
+      <div class="mc-stage negotiation" style="margin-top:14px;">Moving to Autumn Close</div>
+      <ul class="deal-list">
+        <li><span class="deal-name">Airborne Aerospace</span><span class="deal-amount">£4,658</span></li>
+        <li><span class="deal-name">Rohde-Schwarz</span><span class="deal-amount">£15,000</span></li>
+      </ul>
+    </div>
+
+    <!-- ENGAGEMENT -->
+    <div class="movement-card">
+      <div class="mc-stage engagement">New in Engagement (today)</div>
+      <ul class="deal-list">
+        <li><span class="deal-name">Aurora Avionics</span><span class="deal-amount">TBC</span></li>
+        <li><span class="deal-name">LiveEO</span><span class="deal-amount">TBC</span></li>
+        <li><span class="deal-name">Yokogawa UK</span><span class="deal-amount">TBC</span></li>
+      </ul>
+    </div>
+
+    <!-- REGRESSION NOTE -->
+    <div class="movement-card" style="border-color:rgba(212,0,117,0.3);">
+      <div class="mc-stage regression">Watch: Moved backwards</div>
+      <ul class="deal-list">
+        <li><span class="deal-name">Aresys (Smallsat)</span><span class="deal-amount">returned to Cold Outreach</span></li>
+      </ul>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:10px;">Was in Proposal Sent - worth checking status before re-engaging.</div>
+    </div>
+
+  </div>
+
+  <!-- ─── PIPELINE FUNNEL ─── -->
+  <div class="section-label">Full pipeline breakdown</div>
+  <h2>All 200 deals by stage</h2>
+
+  <table class="funnel-table" style="margin-top:14px;">
+    <thead>
+      <tr>
+        <th>Stage</th>
+        <th>Deals</th>
+        <th>Value</th>
+        <th class="bar-cell">Share of pipeline value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="stage-pill won">Closed Won</span></td>
+        <td class="count-cell">23</td>
+        <td class="value-cell" style="color:#3cd97a;">£238,070</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill green" style="width:52%;"></div></div></td>
+      </tr>
+      <tr>
+        <td><span class="stage-pill contract">Contract Sent</span></td>
+        <td class="count-cell">7</td>
+        <td class="value-cell">£44,950</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill pink" style="width:10%;"></div></div></td>
+      </tr>
+      <tr>
+        <td><span class="stage-pill proposal">Proposal Sent</span></td>
+        <td class="count-cell">11</td>
+        <td class="value-cell">£48,283</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill" style="width:10.5%;"></div></div></td>
+      </tr>
+      <tr>
+        <td><span class="stage-pill discovery">Discovery Call Booked</span></td>
+        <td class="count-cell">13</td>
+        <td class="value-cell">£43,500</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill" style="width:9.5%;"></div></div></td>
+      </tr>
+      <tr>
+        <td><span class="stage-pill autumn">Autumn Close</span></td>
+        <td class="count-cell">9</td>
+        <td class="value-cell" style="color:var(--text-muted);">£0 priced</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill" style="width:0%;"></div></div></td>
+      </tr>
+      <tr>
+        <td><span class="stage-pill engagement">Engagement</span></td>
+        <td class="count-cell">61</td>
+        <td class="value-cell" style="color:var(--text-muted);">£0 priced</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill" style="width:0%;"></div></div></td>
+      </tr>
+      <tr>
+        <td><span class="stage-pill cold">Cold Outreach</span></td>
+        <td class="count-cell">76</td>
+        <td class="value-cell">£85,000</td>
+        <td class="bar-cell"><div class="mini-bar-track"><div class="mini-bar-fill" style="width:18%;opacity:0.5;"></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="notice-box" style="margin-top:12px;">
+    <strong>Note:</strong> 137 of 200 deals (68.5%) carry £0 value - pricing not yet set for early-stage conversations. Once proposals are sent this number will increase sharply. The <strong>£221k</strong> in Contract Sent + Proposal Sent stages represents your next confirmed tranche if converted.
+  </div>
+
+  <!-- ─── TEAM PERFORMANCE ─── -->
+  <div class="section-label">Team performance</div>
+  <h2>Activity &amp; deal ownership - week of 25 June</h2>
+
+  <table class="team-table" style="margin-top:14px;">
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th>Deals Owned</th>
+        <th>Pipeline Value</th>
+        <th>Calls L7D</th>
+        <th>Stage Moves L7D</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="owner-name">Cameron Read</td>
+        <td>17</td>
+        <td>£18,716</td>
+        <td><span class="activity-num leader">24</span></td>
+        <td><span class="badge blue" style="font-size:10px;">5 moves</span></td>
+      </tr>
+      <tr>
+        <td class="owner-name">Kyle Hare</td>
+        <td>173</td>
+        <td>£373,022</td>
+        <td><span class="activity-num">22</span></td>
+        <td><span class="badge blue" style="font-size:10px;background:rgba(0,147,211,0.3);color:#4db8e8;">7 moves</span></td>
+      </tr>
+      <tr>
+        <td class="owner-name">Christie Day</td>
+        <td>4</td>
+        <td>£53,773</td>
+        <td>&mdash;</td>
+        <td><span class="badge green" style="font-size:10px;">1 close &mdash; OHB SE</span></td>
+      </tr>
+      <tr>
+        <td class="owner-name">Kevin Gerlis</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td><span class="activity-num">6</span></td>
+        <td>&mdash;</td>
+      </tr>
+      <tr>
+        <td class="owner-name">Gen Richards</td>
+        <td>2</td>
+        <td>£14,292</td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="notice-box" style="margin-top:12px;">
+    <strong>Kyle Hare</strong> holds 173/200 deals (86.5% of pipeline). This reflects how deals are currently assigned - consider reviewing ownership distribution as the team scales up. Cameron Read is the most active by call volume this week at 24 calls.
+  </div>
+
+  <!-- ─── KEY BRANDS ─── -->
+  <div class="section-label">Key brands by stage</div>
+  <h2>Who's in the hot stages right now</h2>
+
+  <div class="brands-grid">
+    <div class="brand-column">
+      <h3><span class="stage-pill won" style="font-size:11px;">Closed Won</span>&nbsp; 23 Exhibitors</h3>
+      <ul class="brand-list">
+        <li><span>Invest Northern Ireland</span><span class="brand-val">£25,642</span></li>
+        <li><span>Business Durham / Space NE</span><span class="brand-val">£25,327</span></li>
+        <li><span>OHB SE</span><span class="brand-val">£18,773</span></li>
+        <li><span>GMV</span><span class="brand-val">£14,812</span></li>
+        <li><span>Filtronic</span><span class="brand-val">£14,058</span></li>
+        <li><span>KSAT</span><span class="brand-val">£12,936</span></li>
+        <li><span>EOS</span><span class="brand-val">£12,000</span></li>
+        <li><span>Amphenol</span><span class="brand-val">£11,500</span></li>
+        <li><span>Teledyne</span><span class="brand-val">£10,000</span></li>
+        <li><span>+ 14 more</span><span class="brand-val">£72,120</span></li>
+      </ul>
+    </div>
+
+    <div class="brand-column">
+      <h3><span class="stage-pill contract" style="font-size:11px;">Contract + Proposal</span>&nbsp; 18 Deals</h3>
+      <ul class="brand-list">
+        <li><span>Rohde-Schwarz</span><span class="brand-val">£15,000</span></li>
+        <li><span>Welsh Government</span><span class="brand-val">£14,292</span></li>
+        <li><span>PWC</span><span class="brand-val">£12,000</span></li>
+        <li><span>PNO Innovation</span><span class="brand-val">£10,000</span></li>
+        <li><span>Technia</span><span class="brand-val">£10,000</span></li>
+        <li><span>Angstrom Technology</span><span class="brand-val">£6,000</span></li>
+        <li><span>Airborne Aerospace</span><span class="brand-val">£4,658</span></li>
+        <li><span>Olsen Actuators</span><span class="brand-val">£5,000</span></li>
+        <li><span>European Springs</span><span class="brand-val">£3,500</span></li>
+        <li><span>+ 9 more</span><span class="brand-val">TBC</span></li>
+      </ul>
+    </div>
+
+    <div class="brand-column">
+      <h3><span class="stage-pill discovery" style="font-size:11px;">Discovery / Hot</span>&nbsp; 13 Deals</h3>
+      <ul class="brand-list">
+        <li><span>Surrey Satellite</span><span class="brand-val">£20,000</span></li>
+        <li><span>Keysight</span><span class="brand-val">£10,000</span></li>
+        <li><span>Tritem</span><span class="brand-val">£8,000</span></li>
+        <li><span>Adamant-Composites</span><span class="brand-val">£8,000</span></li>
+        <li><span>Unibap AB</span><span class="brand-val">£7,500</span></li>
+        <li><span>Karman Space Programme</span><span class="brand-val">TBC</span></li>
+        <li><span>Datalink Electronics</span><span class="brand-val">TBC</span></li>
+        <li><span>Marks &amp; Clerk</span><span class="brand-val">TBC</span></li>
+        <li><span>TE Connectivity</span><span class="brand-val">TBC</span></li>
+        <li><span>+ 4 more</span><span class="brand-val">TBC</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── WHAT'S MISSING ─── -->
+  <div class="section-label" style="margin-top:44px;">Recommended additions</div>
+  <h2>What this report will add as data matures</h2>
+
+  <div class="missing-grid">
+    <div class="missing-item">
+      <div class="mi-title">Week-on-week comparison</div>
+      <div class="mi-why">Needs a previous week's baseline. Will auto-populate from next report onwards - shows direction of travel, not just snapshot.</div>
+    </div>
+    <div class="missing-item">
+      <div class="mi-title">Stage conversion rates</div>
+      <div class="mi-why">What % of Discovery Calls convert to Proposals. Currently insufficient historical data - will become meaningful by end of Q3.</div>
+    </div>
+    <div class="missing-item">
+      <div class="mi-title">Deals at risk (stuck in stage)</div>
+      <div class="mi-why">Flag any deal that has sat in the same stage for 14+ days. Needs `date_entered_current_stage` vs today logic - can add now if agreed threshold is right.</div>
+    </div>
+    <div class="missing-item">
+      <div class="mi-title">30/60/90 day revenue forecast</div>
+      <div class="mi-why">Requires close dates to be set on deals in Contract + Proposal stages. Currently incomplete - worth making this a mandatory field in HubSpot.</div>
+    </div>
+    <div class="missing-item">
+      <div class="mi-title">Average deal size tracking</div>
+      <div class="mi-why">Current average closed deal: £10,351. Target average needed: ~£9,600 to hit £2.4m across 250 exhibitors. On track if volume holds.</div>
+    </div>
+    <div class="missing-item">
+      <div class="mi-title">Unpriced deals (68.5%)</div>
+      <div class="mi-why">137 deals have no amount set. If even 50% of Engagement deals convert at average deal size, that's ~£300k unrecognised pipeline. Worth pricing up.</div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ─── FOOTER ─── -->
+<footer class="report-footer">
+  <div class="footer-brand">Space-Comm Expo Europe &mdash; in partnership with ADS</div>
+  <div>Data source: HubSpot pipeline (ID: 3602731249) &nbsp;&middot;&nbsp; Generated automatically &nbsp;&middot;&nbsp; 25 Jun 2026</div>
+</footer>
+
+</body>
+</html>
