@@ -529,6 +529,126 @@
   })();
   </script>
 
+
+  <div class="sec-label">Week on week</div>
+  <h2>Revenue closed each week &mdash; 2027 vs 2026 (weekly velocity)</h2>
+  <p style="font-size:.82rem;color:#6b8099;margin:-.5rem 0 1.2rem;">Shows new revenue booked each individual week. Both shows aligned to the same axis: 2026 London dates shifted +12 months. Spikes in both shows reflect bulk close sprints around show time.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-legend">
+      <span class="cleg-pink">&#9632; 2027 weekly closes</span>&nbsp;&nbsp;
+      <span class="cleg-blue">&#9135; London 2026 weekly closes (equiv. weeks)</span>&nbsp;&nbsp;
+      <span class="cleg-muted">&#9135; Today = 22 Jun</span>
+    </div>
+    <canvas id="wowChart" height="110"></canvas>
+  </div>
+
+  <script>
+  (function(){
+    const labels = ["23 Feb", "2 Mar", "9 Mar", "16 Mar", "23 Mar", "24 Mar", "30 Mar", "31 Mar", "6 Apr", "7 Apr", "13 Apr", "14 Apr", "20 Apr", "21 Apr", "27 Apr", "28 Apr", "4 May", "5 May", "11 May", "12 May", "18 May", "19 May", "25 May", "26 May", "1 Jun", "2 Jun", "8 Jun", "9 Jun", "15 Jun", "16 Jun", "22 Jun", "23 Jun", "30 Jun", "7 Jul", "14 Jul", "21 Jul", "28 Jul", "4 Aug", "11 Aug", "18 Aug", "25 Aug", "1 Sep", "8 Sep", "15 Sep", "22 Sep", "29 Sep", "6 Oct", "13 Oct", "20 Oct", "27 Oct", "3 Nov", "10 Nov", "17 Nov", "24 Nov", "1 Dec", "8 Dec", "15 Dec", "22 Dec", "29 Dec", "5 Jan", "12 Jan", "19 Jan", "26 Jan", "2 Feb", "9 Feb", "16 Feb", "23 Feb", "2 Mar"];
+    const d27    = [54998,528629,38485,6102,3234,null,9308,null,0,null,12000,null,44327,null,5292,null,0,null,8500,null,12543,null,0,null,33265,null,0,null,0,null,18773,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+    const d26    = [null,null,null,null,null,15009,null,5901,null,305554,null,5651,null,7906,null,0,null,0,null,10061,null,67746,null,5166,null,6177,null,5777,null,12361,null,0,0,27196,10460,0,4034,0,34076,16024,50180,1750,1000,43583,7248,52026,12603,28899,36412,37061,27038,54547,25000,9397,11824,30838,151556,0,4686,31898,40802,77989,49429,100920,35941,58894,5284,250];
+    const todayIdx = 30;
+    const ctx = document.getElementById('wowChart').getContext('2d');
+
+    // Today vertical line via afterDraw plugin
+    const todayLine = {
+      id:'todayLine',
+      afterDraw(chart){
+        if(todayIdx<0) return;
+        const {ctx,chartArea,scales} = chart;
+        const x = scales.x.getPixelForValue(todayIdx);
+        ctx.save();
+        ctx.strokeStyle = '#d40075';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4,4]);
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top);
+        ctx.lineTo(x, chartArea.bottom);
+        ctx.stroke();
+        ctx.fillStyle = '#d40075';
+        ctx.font = '600 10px Inter,sans-serif';
+        ctx.fillText('Today', x+4, chartArea.top+12);
+        ctx.restore();
+      }
+    };
+
+    new Chart(ctx, {
+      type: 'bar',
+      plugins: [todayLine],
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: '2027 weekly closes',
+            data: d27,
+            backgroundColor: 'rgba(212,0,117,0.75)',
+            borderColor: '#d40075',
+            borderWidth: 0,
+            borderRadius: 3,
+            order: 1
+          },
+          {
+            label: 'London 2026 (equiv. weeks)',
+            data: d26,
+            type: 'line',
+            borderColor: '#0093d3',
+            backgroundColor: 'transparent',
+            borderDash: [4,3],
+            borderWidth: 2,
+            pointRadius: 2,
+            pointBackgroundColor: '#0093d3',
+            fill: false,
+            tension: 0.2,
+            spanGaps: true,
+            order: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: {mode:'index', intersect:false},
+        plugins: {
+          legend: {display:false},
+          tooltip: {
+            backgroundColor: '#0d1826',
+            borderColor: '#1a4a7a',
+            borderWidth: 1,
+            padding: 10,
+            callbacks: {
+              title: (items) => 'Week of ' + items[0].label,
+              label: (c) => {
+                if(c.parsed.y===null || c.parsed.y===0) return null;
+                return ' ' + c.dataset.label + ': £' + Math.round(c.parsed.y).toLocaleString('en-GB');
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {color:'rgba(26,74,122,0.25)'},
+            ticks: {
+              color: '#6b8099',
+              font: {size:9},
+              maxRotation: 45,
+              autoSkip: true,
+              maxTicksLimit: 18
+            }
+          },
+          y: {
+            min: 0,
+            grid: {color:'rgba(26,74,122,0.35)'},
+            ticks: {
+              color: '#6b8099',
+              callback: (v) => v>=1000 ? '£'+(v/1000).toFixed(0)+'k' : '£'+v
+            }
+          }
+        }
+      }
+    });
+  })();
+  </script>
+
 <footer>
   <div>Space-Comm Expo Europe &mdash; in partnership with ADS</div>
   <div>Source: HubSpot pipeline 3602731249 &nbsp;&middot;&nbsp; Auto-generated 25 Jun 2026 &nbsp;&middot;&nbsp; L7D = stage changes 18&ndash;25 Jun 2026</div>
