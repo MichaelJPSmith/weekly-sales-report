@@ -345,6 +345,118 @@
   </div>
 
 </div>
+
+<style>
+.yoy-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.5rem 0 2rem}
+.ykpi{background:#0f2035;border:1px solid #1a4a7a;border-radius:12px;padding:1.2rem 1.5rem}
+.yk-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6b8099;margin-bottom:.4rem}
+.yk-val{font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:.5rem}
+.yk-sub{font-size:.78rem;color:#6b8099;line-height:1.55}
+.chart-wrap{background:#0f2035;border:1px solid #1a4a7a;border-radius:12px;padding:1.5rem 1.5rem 1rem;margin:0 0 1.5rem}
+.chart-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.78rem}
+.cleg-pink{color:#d40075} .cleg-blue{color:#0093d3} .cleg-amber{color:#f39c12} .cleg-muted{color:#6b8099}
+@media(max-width:700px){.yoy-kpis{grid-template-columns:1fr}}
+</style>
+
+  <div class="sec-label">Year on year</div>
+  <h2>2027 vs London 2026 &mdash; cumulative confirmed revenue</h2>
+
+  <div class="yoy-kpis">
+    <div class="ykpi">
+      <div class="yk-label">2027 &mdash; right now</div>
+      <div class="yk-val" style="color:var(--pink);">&#163;775,456</div>
+      <div class="yk-sub"><strong style="color:#2ecc71;">+73% ahead of last year</strong> at this point in the cycle.<br>London 2026 was at &#163;447,309 in the equivalent week.</div>
+    </div>
+    <div class="ykpi">
+      <div class="yk-label">London 2026 &mdash; final revenue</div>
+      <div class="yk-val" style="color:var(--blue);">&#163;1,526,152</div>
+      <div class="yk-sub">We&#39;re at 50.8% of last year&#39;s total, 17 weeks earlier in the cycle. Last year&#39;s big Dec&ndash;Jan push added &#163;400k+ in two months &mdash; that window is ahead.</div>
+    </div>
+    <div class="ykpi">
+      <div class="yk-label">vs 2027 target</div>
+      <div class="yk-val" style="color:var(--amber);">34.1%</div>
+      <div class="yk-sub">&#163;775,456 of &#163;2,281,000 target. &#163;1,505,544 still to close. Last year&#39;s final was 67% of this year&#39;s target &mdash; we need 50% more revenue than 2026 produced in total.</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-legend">
+      <span class="cleg-pink">&#9632; Space-Comm 2027 (actual dates)</span>&nbsp;
+      <span class="cleg-blue">&#9632; London 2026 (mapped to equivalent cycle weeks)</span>&nbsp;
+      <span class="cleg-amber">&#9135;&#9135; 2027 target &#163;2.28m</span>&nbsp;
+      <span class="cleg-muted">&#9135;&#9135; 2026 final &#163;1.53m</span>
+    </div>
+    <canvas id="yoyChart" height="105"></canvas>
+  </div>
+
+  <div class="notice">
+    <strong>How to read this:</strong> The blue dashed line shows London 2026&#39;s revenue mapped to equivalent cycle weeks (shifted +12 months) so both shows sit on the same axis. We&#39;re 73% ahead of last year today &mdash; but 2026&#39;s data shows the real acceleration came in Aug&ndash;Dec 2025. That&#39;s the window to protect and push hard on. If 2027 follows a similar trajectory from this point, revenue would reach &#163;1.7&ndash;1.9m &mdash; strong but still short of &#163;2.28m target.
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script>
+  (function(){
+    const d27=[
+      {x:'2026-02-23',y:54998},{x:'2026-03-02',y:583627},{x:'2026-03-09',y:622112},
+      {x:'2026-03-16',y:628214},{x:'2026-03-23',y:631448},{x:'2026-03-30',y:640756},
+      {x:'2026-04-06',y:640756},{x:'2026-04-13',y:652756},{x:'2026-04-20',y:697083},
+      {x:'2026-04-27',y:702375},{x:'2026-05-04',y:702375},{x:'2026-05-11',y:710875},
+      {x:'2026-05-18',y:723418},{x:'2026-05-25',y:723418},{x:'2026-06-01',y:756683},
+      {x:'2026-06-08',y:756683},{x:'2026-06-15',y:756683},{x:'2026-06-22',y:775456}
+    ];
+    const d26=[
+      {x:'2026-03-24',y:15009},{x:'2026-03-31',y:20910},{x:'2026-04-07',y:326464},
+      {x:'2026-04-14',y:332115},{x:'2026-04-21',y:340021},{x:'2026-04-28',y:340021},
+      {x:'2026-05-05',y:340021},{x:'2026-05-12',y:350082},{x:'2026-05-19',y:417828},
+      {x:'2026-05-26',y:422994},{x:'2026-06-02',y:429171},{x:'2026-06-09',y:434948},
+      {x:'2026-06-16',y:447309},{x:'2026-06-23',y:447309},{x:'2026-06-30',y:447309},
+      {x:'2026-07-07',y:474505},{x:'2026-07-14',y:484965},{x:'2026-07-21',y:484965},
+      {x:'2026-07-28',y:488999},{x:'2026-08-04',y:488999},{x:'2026-08-11',y:523075},
+      {x:'2026-08-18',y:539099},{x:'2026-08-25',y:589279},{x:'2026-09-01',y:591029},
+      {x:'2026-09-08',y:592029},{x:'2026-09-15',y:635612},{x:'2026-09-22',y:642860},
+      {x:'2026-09-29',y:694886},{x:'2026-10-06',y:707489},{x:'2026-10-13',y:736388},
+      {x:'2026-10-20',y:772800},{x:'2026-10-27',y:809861},{x:'2026-11-03',y:836899},
+      {x:'2026-11-10',y:891446},{x:'2026-11-17',y:916446},{x:'2026-11-24',y:925843},
+      {x:'2026-12-01',y:937667},{x:'2026-12-08',y:968505},{x:'2026-12-15',y:1120060},
+      {x:'2026-12-22',y:1120060},{x:'2026-12-29',y:1124746},{x:'2027-01-05',y:1156644},
+      {x:'2027-01-12',y:1197447},{x:'2027-01-19',y:1275436},{x:'2027-01-26',y:1324865},
+      {x:'2027-02-02',y:1425785},{x:'2027-02-09',y:1461726},{x:'2027-02-16',y:1520619},
+      {x:'2027-02-23',y:1525903},{x:'2027-03-02',y:1526153}
+    ];
+    const xr=['2026-02-01','2027-04-01'];
+    const tgt=xr.map(x=>({x,y:2281000}));
+    const fin=xr.map(x=>({x,y:1526152}));
+    new Chart(document.getElementById('yoyChart'),{
+      type:'line',
+      data:{datasets:[
+        {label:'Space-Comm 2027',data:d27,borderColor:'#d40075',backgroundColor:'rgba(212,0,117,0.1)',borderWidth:3,pointRadius:3,fill:true,tension:0.2,order:1},
+        {label:'London 2026 (equiv. weeks)',data:d26,borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[5,4],borderWidth:2,pointRadius:2,fill:false,tension:0.2,order:2},
+        {label:'2027 Target £2.28m',data:tgt,borderColor:'#f39c12',backgroundColor:'transparent',borderDash:[8,4],borderWidth:2,pointRadius:0,fill:false,order:3},
+        {label:'2026 Final £1.53m',data:fin,borderColor:'#6b8099',backgroundColor:'transparent',borderDash:[3,3],borderWidth:1,pointRadius:0,fill:false,order:4}
+      ]},
+      options:{
+        responsive:true,
+        interaction:{mode:'index',intersect:false},
+        plugins:{
+          legend:{display:false},
+          tooltip:{
+            backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,
+            callbacks:{
+              title:(i)=>{const d=new Date(i[0].parsed.x);return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'2-digit'});},
+              label:(c)=>c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB')
+            }
+          }
+        },
+        scales:{
+          x:{type:'time',time:{unit:'month',displayFormats:{month:"MMM ''yy"}},min:'2026-02-01',max:'2027-04-01',grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',maxTicksLimit:14}},
+          y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>'£'+(v/1000).toFixed(0)+'k'}}
+        }
+      }
+    });
+  })();
+  </script>
+
 <footer>
   <div>Space-Comm Expo Europe &mdash; in partnership with ADS</div>
   <div>Source: HubSpot pipeline 3602731249 &nbsp;&middot;&nbsp; Auto-generated 25 Jun 2026 &nbsp;&middot;&nbsp; L7D = stage changes 18&ndash;25 Jun 2026</div>
