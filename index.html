@@ -346,54 +346,6 @@
 
 </div>
 
-<style>
-.yoy-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.5rem 0 2rem}
-.ykpi{background:#0f2035;border:1px solid #1a4a7a;border-radius:12px;padding:1.2rem 1.5rem}
-.yk-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6b8099;margin-bottom:.4rem}
-.yk-val{font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:.5rem}
-.yk-sub{font-size:.78rem;color:#6b8099;line-height:1.55}
-.chart-wrap{background:#0f2035;border:1px solid #1a4a7a;border-radius:12px;padding:1.5rem 1.5rem 1rem;margin:0 0 1.5rem}
-.chart-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.78rem}
-.cleg-pink{color:#d40075} .cleg-blue{color:#0093d3} .cleg-amber{color:#f39c12} .cleg-muted{color:#6b8099}
-@media(max-width:700px){.yoy-kpis{grid-template-columns:1fr}}
-</style>
-
-  <div class="sec-label">Year on year</div>
-  <h2>2027 vs London 2026 &mdash; cumulative confirmed revenue</h2>
-
-  <div class="yoy-kpis">
-    <div class="ykpi">
-      <div class="yk-label">2027 &mdash; right now</div>
-      <div class="yk-val" style="color:var(--pink);">&#163;775,456</div>
-      <div class="yk-sub"><strong style="color:#2ecc71;">+73% ahead of last year</strong> at this point in the cycle.<br>London 2026 was at &#163;447,309 in the equivalent week.</div>
-    </div>
-    <div class="ykpi">
-      <div class="yk-label">London 2026 &mdash; final revenue</div>
-      <div class="yk-val" style="color:var(--blue);">&#163;1,526,152</div>
-      <div class="yk-sub">We&#39;re at 50.8% of last year&#39;s total, 17 weeks earlier in the cycle. Last year&#39;s big Dec&ndash;Jan push added &#163;400k+ in two months &mdash; that window is ahead.</div>
-    </div>
-    <div class="ykpi">
-      <div class="yk-label">vs 2027 target</div>
-      <div class="yk-val" style="color:var(--amber);">34.1%</div>
-      <div class="yk-sub">&#163;775,456 of &#163;2,281,000 target. &#163;1,505,544 still to close. Last year&#39;s final was 67% of this year&#39;s target &mdash; we need 50% more revenue than 2026 produced in total.</div>
-    </div>
-  </div>
-
-  <div class="chart-wrap">
-    <div class="chart-legend">
-      <span class="cleg-pink">&#9632; Space-Comm 2027 (actual dates)</span>&nbsp;
-      <span class="cleg-blue">&#9632; London 2026 (mapped to equivalent cycle weeks)</span>&nbsp;
-      <span class="cleg-amber">&#9135;&#9135; 2027 target &#163;2.28m</span>&nbsp;
-      <span class="cleg-muted">&#9135;&#9135; 2026 final &#163;1.53m</span>
-    </div>
-    <canvas id="yoyChart" height="105"></canvas>
-  </div>
-
-  <div class="notice">
-    <strong>How to read this:</strong> The blue dashed line shows London 2026&#39;s revenue mapped to equivalent cycle weeks (shifted +12 months) so both shows sit on the same axis. We&#39;re 73% ahead of last year today &mdash; but 2026&#39;s data shows the real acceleration came in Aug&ndash;Dec 2025. That&#39;s the window to protect and push hard on. If 2027 follows a similar trajectory from this point, revenue would reach &#163;1.7&ndash;1.9m &mdash; strong but still short of &#163;2.28m target.
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
   <script>
   (function(){
@@ -451,6 +403,126 @@
         scales:{
           x:{type:'time',time:{unit:'month',displayFormats:{month:"MMM ''yy"}},min:'2026-02-01',max:'2027-04-01',grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',maxTicksLimit:14}},
           y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>'£'+(v/1000).toFixed(0)+'k'}}
+        }
+      }
+    });
+  })();
+  </script>
+
+
+<style>
+.yoy-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.5rem 0 2rem}
+.ykpi{background:#0f2035;border:1px solid #1a4a7a;border-radius:12px;padding:1.2rem 1.5rem}
+.ykpi.hero{border-color:#2ecc71;background:linear-gradient(135deg,#0f2035 60%,rgba(46,204,113,0.06))}
+.yk-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6b8099;margin-bottom:.4rem}
+.yk-val{font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:.5rem}
+.yk-sub{font-size:.78rem;color:#6b8099;line-height:1.6}
+.yk-compare{display:flex;gap:1.2rem;margin:.6rem 0 .2rem;flex-wrap:wrap}
+.ykc{text-align:center;flex:1;min-width:80px}
+.ykc-num{font-size:1.3rem;font-weight:800;line-height:1}
+.ykc-lab{font-size:.65rem;color:#6b8099;text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+.yk-arrow{font-size:1.6rem;font-weight:900;align-self:center;flex:0}
+.chart-wrap{background:#0f2035;border:1px solid #1a4a7a;border-radius:12px;padding:1.5rem 1.5rem 1rem;margin:0 0 1.5rem}
+.chart-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.78rem}
+.cleg-pink{color:#d40075} .cleg-blue{color:#0093d3} .cleg-amber{color:#f39c12} .cleg-muted{color:#6b8099}
+@media(max-width:700px){.yoy-kpis{grid-template-columns:1fr}}
+</style>
+
+  <div class="sec-label">Year on year</div>
+  <h2>2027 vs London 2026 &mdash; run rate and cumulative revenue</h2>
+
+  <div class="yoy-kpis">
+
+    <div class="ykpi hero">
+      <div class="yk-label">&#9650; Run rate vs last year</div>
+      <div class="yk-val" style="color:#2ecc71;">+4.7pp ahead</div>
+      <div class="yk-compare">
+        <div class="ykc">
+          <div class="ykc-num" style="color:#6b8099;">29.3%</div>
+          <div class="ykc-lab">London 2026<br>at this point<br>(£447k of £1.53m final)</div>
+        </div>
+        <div class="yk-arrow" style="color:#2ecc71;">&#8594;</div>
+        <div class="ykc">
+          <div class="ykc-num" style="color:#2ecc71;">34.0%</div>
+          <div class="ykc-lab">2027 now<br>(£775k of<br>£2.28m target)</div>
+        </div>
+      </div>
+      <div class="yk-sub">Last year at this stage you&#39;d covered 29.3% of what you ultimately closed. You&#39;re now at 34.0% of your target. That 4.7pp lead means you&#39;re converting pipeline faster than last year&#39;s pace.</div>
+    </div>
+
+    <div class="ykpi">
+      <div class="yk-label">YoY absolute</div>
+      <div class="yk-val" style="color:var(--pink);">+73%</div>
+      <div class="yk-sub">&#163;775,456 confirmed this year vs &#163;447,309 at equivalent point last year. If the 2027 show follows last year&#39;s trajectory from here, implied finish is ~&#163;1.85m&ndash;2.0m (pro-rated from the 4.7pp run-rate advantage).</div>
+    </div>
+
+    <div class="ykpi">
+      <div class="yk-label">Still to close vs target</div>
+      <div class="yk-val" style="color:var(--amber);">&#163;1,505,544</div>
+      <div class="yk-sub">&#163;775,456 of &#163;2,281,000. Last year&#39;s final was &#163;1.53m &mdash; 67% of this year&#39;s target. To hit &#163;2.28m, we need to close ~50% more total revenue than the entire 2026 London show generated.</div>
+    </div>
+
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-legend">
+      <span class="cleg-pink">&#9632; Space-Comm 2027 (actual dates)</span>&nbsp;&nbsp;
+      <span class="cleg-blue">&#9632;&#9135; London 2026 (mapped to equiv. cycle months)</span>&nbsp;&nbsp;
+      <span class="cleg-amber">&#9135;&#9135; 2027 target &#163;2.28m</span>&nbsp;&nbsp;
+      <span class="cleg-muted">&#9135;&#9135; 2026 final &#163;1.53m</span>
+    </div>
+    <canvas id="yoyChart" height="105"></canvas>
+  </div>
+
+  <div class="notice">
+    <strong>How to read this:</strong> Both lines share the same x-axis. The blue dashed line shows London 2026&#39;s cumulative revenue mapped to equivalent months (shifted +12 months). The pink line is 2027 actual. Today = Jun &#39;26. We&#39;re running 4.7 percentage points ahead of last year&#39;s run rate &mdash; but the 2026 chart shows the real volume came Aug&ndash;Dec. That sprint window is what needs to be protected and accelerated to close the gap to target.
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script>
+  (function(){
+    const labels=["Feb '26","Mar '26","Apr '26","May '26","Jun '26★","Jul '26","Aug '26","Sep '26","Oct '26","Nov '26","Dec '26","Jan '27","Feb '27","Mar '27"];
+    const d27   =[54998,640756,702375,723418,775456,null,null,null,null,null,null,null,null,null];
+    const d26   =[null,20910,340021,422994,447309,488999,589279,694886,809861,925843,1124746,1324865,1525903,1526153];
+    const tgt   =labels.map(()=>2281000);
+    const fin26 =labels.map(()=>1526152);
+    const ctx=document.getElementById('yoyChart').getContext('2d');
+    new Chart(ctx,{
+      type:'line',
+      data:{
+        labels:labels,
+        datasets:[
+          {label:'Space-Comm 2027',data:d27,borderColor:'#d40075',backgroundColor:'rgba(212,0,117,0.12)',borderWidth:3,pointRadius:4,pointBackgroundColor:'#d40075',fill:true,tension:0.25,spanGaps:false},
+          {label:'London 2026 (equiv.)',data:d26,borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[5,4],borderWidth:2,pointRadius:3,pointBackgroundColor:'#0093d3',fill:false,tension:0.25,spanGaps:false},
+          {label:'2027 Target',data:tgt,borderColor:'#f39c12',backgroundColor:'transparent',borderDash:[8,4],borderWidth:2,pointRadius:0,fill:false},
+          {label:'2026 Final',data:fin26,borderColor:'#6b8099',backgroundColor:'transparent',borderDash:[3,3],borderWidth:1,pointRadius:0,fill:false}
+        ]
+      },
+      options:{
+        responsive:true,
+        interaction:{mode:'index',intersect:false},
+        plugins:{
+          legend:{display:false},
+          tooltip:{
+            backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,padding:10,
+            callbacks:{
+              label:(c)=>{
+                if(c.parsed.y===null)return null;
+                return ' '+c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB');
+              }
+            }
+          }
+        },
+        scales:{
+          x:{grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',font:{size:11}}},
+          y:{
+            min:0,
+            grid:{color:'rgba(26,74,122,0.35)'},
+            ticks:{color:'#6b8099',callback:(v)=>{
+              if(v>=1000000)return '£'+(v/1000000).toFixed(1)+'m';
+              return '£'+(v/1000).toFixed(0)+'k';
+            }}
+          }
         }
       }
     });
