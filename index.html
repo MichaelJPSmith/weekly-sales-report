@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Space-Comm Sales Report — 11 August 2026</title>
+<title>Space-Comm Sales Report — 10–13 August 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy-dark:#0d1826;--navy:#0f2035;--border:#1a4a7a;--pink:#d40075;--blue:#0093d3;--green:#2ecc71;--amber:#f39c12;--red:#e74c3c;--purple:#c9a7ff;--muted:#6b8099}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--navy-dark);color:#e8f0f8;font-family:'Inter',sans-serif;font-size:14px;line-height:1.5}
-a{color:var(--blue);text-decoration:none}
 .wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
 header{border-bottom:1px solid var(--border);padding:1.5rem 0 1.2rem;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:.8rem}
 .logo{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:.04em}
@@ -25,7 +24,7 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margi
 .tbar-track{height:10px;background:#0d2040;border-radius:5px;overflow:hidden;display:flex}
 .tbar-fill-pink{background:var(--pink);height:100%;border-radius:5px 0 0 5px}
 .tbar-fill-amber{background:var(--amber);height:100%}
-.tbar-meta{display:flex;gap:1.5rem;margin-top:.6rem;font-size:.75rem;color:var(--muted)}
+.tbar-meta{display:flex;gap:1.5rem;margin-top:.6rem;font-size:.75rem;color:var(--muted);flex-wrap:wrap}
 .pill{display:inline-block;padding:.15rem .55rem;border-radius:999px;font-size:.68rem;font-weight:700;letter-spacing:.04em}
 .pill.won{background:rgba(46,204,113,.15);color:#2ecc71}
 .pill.autumn{background:rgba(243,156,18,.15);color:#f39c12}
@@ -33,49 +32,35 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margi
 .pill.eng{background:rgba(201,167,255,.15);color:#c9a7ff}
 .pill.disc{background:rgba(0,147,211,.2);color:#00b4e6}
 .pill.neg{background:rgba(212,0,117,.15);color:#d40075}
-.pill.event{background:rgba(46,204,113,.1);color:#27ae60}
 .pill.cold{background:rgba(107,128,153,.15);color:#8a9fb8}
 .pill.lost{background:rgba(231,76,60,.15);color:#e74c3c}
 .sblock{background:var(--navy);border:1px solid var(--border);border-radius:12px;margin-bottom:1rem;overflow:hidden}
-.sblock-hd{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;border-bottom:1px solid var(--border)}
+.sblock-hd{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.4rem}
 .sblock-empty{padding:.9rem 1.2rem;color:var(--muted);font-size:.8rem;font-style:italic}
 .dtable{width:100%;border-collapse:collapse}
 .dtable td{padding:.6rem 1.2rem;border-bottom:1px solid rgba(26,74,122,.4);font-size:.82rem}
 .dtable tr:last-child td{border-bottom:none}
 .dtable .dn{font-weight:600;color:#dce8f5}
 .dtable .dv{text-align:right;font-weight:700;color:var(--green)}
+.dtable .dv.lost{color:var(--red)}
 .dtable .dv.muted{color:var(--muted)}
 .dtable .do{color:var(--muted);font-size:.75rem}
+.dtable .dt{color:var(--muted);font-size:.7rem;text-align:right}
 .badge{display:inline-block;padding:.1rem .45rem;border-radius:4px;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .badge.green{background:rgba(46,204,113,.2);color:#2ecc71}
-.badge.pink{background:rgba(212,0,117,.2);color:#d40075}
-.badge.blue{background:rgba(0,147,211,.2);color:#0093d3}
-.badge.blue2{background:rgba(0,147,211,.1);color:#0093d3}
 .badge.amber{background:rgba(243,156,18,.2);color:#f39c12}
+.badge.blue{background:rgba(0,147,211,.2);color:#0093d3}
 .badge.red{background:rgba(231,76,60,.2);color:#e74c3c}
 .badge.grey{background:rgba(107,128,153,.2);color:var(--muted)}
 .ptable{width:100%;border-collapse:collapse;margin-bottom:1.5rem}
 .ptable th{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:.6rem 1rem;border-bottom:1px solid var(--border)}
-.ptable th.bw{text-align:left}
 .ptable td{padding:.65rem 1rem;border-bottom:1px solid rgba(26,74,122,.3);font-size:.83rem}
 .ptable tr.tot td{border-top:1px solid var(--border);font-weight:700;border-bottom:none}
 .vf{text-align:right;font-weight:700}.vf.green{color:#2ecc71}.vf.red{color:#e74c3c}.vf.muted{color:var(--muted)}
 .mb{height:6px;background:#0d2040;border-radius:3px;overflow:hidden;width:140px}
-.mf{height:100%;border-radius:3px;background:var(--blue)}
-.mf.g{background:var(--green)}.mf.a{background:var(--amber)}.mf.r{background:var(--red)}
+.mf{height:100%;border-radius:3px;background:var(--blue)}.mf.g{background:var(--green)}.mf.a{background:var(--amber)}.mf.r{background:var(--red)}
 .notice{background:rgba(0,147,211,.07);border:1px solid rgba(0,147,211,.2);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0 2rem;font-size:.82rem;color:#a8c4d8;line-height:1.6}
-.owner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-bottom:2rem}
-.ocard{background:var(--navy);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.ocard-hd{padding:1rem 1.2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:.8rem;flex-wrap:wrap}
-.oname{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:#fff}
-.ototals{font-size:.75rem;color:var(--muted);margin-top:.2rem}
-.obadges{display:flex;gap:.4rem;flex-wrap:wrap}
-.ostage{width:100%;border-collapse:collapse}
-.ostage td{padding:.5rem 1.2rem;border-bottom:1px solid rgba(26,74,122,.3);font-size:.8rem}
-.ostage tr:last-child td{border-bottom:none}
-.sn{width:55%}.sc{width:20%;color:var(--muted)}.sv{width:25%;text-align:right;font-weight:700}
-.sv.hot{color:#f39c12}.sv.won{color:#2ecc71}.sv.warm{color:#0093d3}.sv.muted{color:var(--muted)}.sv.lost{color:#e74c3c}
-.lost-row td{opacity:.65}
+.notice.warn{background:rgba(231,76,60,.07);border-color:rgba(231,76,60,.2);color:#f5b4ae}
 .yoy-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.5rem 0 2rem}
 .ykpi{background:var(--navy);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem}
 .ykpi.hero{border-color:#2ecc71;background:linear-gradient(135deg,#0f2035 60%,rgba(46,204,113,0.06))}
@@ -91,300 +76,188 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margi
 .chart-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.78rem}
 .cleg-pink{color:#d40075}.cleg-blue{color:#0093d3}.cleg-amber{color:#f39c12}.cleg-muted{color:var(--muted)}
 footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);flex-wrap:wrap;gap:.5rem}
-@media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.owner-grid{grid-template-columns:1fr}.yoy-kpis{grid-template-columns:1fr}}
+@media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.yoy-kpis{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <div class="logo">Space<span>-Comm</span> Expo Europe 2027 &mdash; Weekly Sales Report</div>
-  <div class="run-date">Week of 11 August 2026 &nbsp;&middot;&nbsp; Pipeline: Space-Comm Expo Europe 2027 &nbsp;&middot;&nbsp; Target: &#163;2,281,000</div>
+  <div class="logo">Space<span>-Comm</span> Expo Europe 2027 - Weekly Sales Report</div>
+  <div class="run-date">Mon 10 - Thu 13 August 2026 &nbsp;&#183;&nbsp; One-off run &nbsp;&#183;&nbsp; Target: &#163;2,281,000</div>
 </header>
 
-  <div class="sec-label">Pipeline snapshot</div>
-  <h2>&#127881; Confirmed revenue crossed &#163;1m this week</h2>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-val" style="color:#2ecc71;">&#163;1,032,119</div><div class="kpi-label">Closed Won (91 deals)</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:#f39c12;">&#163;677,050</div><div class="kpi-label">Hot pipeline (99 deals)</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:#0093d3;">658</div><div class="kpi-label">Total deals in pipeline</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:#c9a7ff;">21</div><div class="kpi-label">Stage moves this week</div></div>
+<div class="sec-label">Pipeline snapshot</div>
+<h2>&#127881; &#163;1,066,547 confirmed - 3 new wins this week</h2>
+<div class="kpi-grid">
+  <div class="kpi"><div class="kpi-val" style="color:#2ecc71;">&#163;1,066,547</div><div class="kpi-label">Closed Won (94 deals)</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#f39c12;">&#163;669,325</div><div class="kpi-label">Hot pipeline (97 deals)</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#0093d3;">661</div><div class="kpi-label">Total deals in pipeline</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#c9a7ff;">17</div><div class="kpi-label">Stage moves Mon-Thu</div></div>
+</div>
+
+<div class="tbar">
+  <div class="tbar-row"><span style="font-weight:600;color:#fff;">Progress to &#163;2,281,000 target</span><span style="color:var(--muted);font-size:.8rem;">&#163;545,128 gap if hot pipeline converts</span></div>
+  <div class="tbar-track">
+    <div class="tbar-fill-pink" style="width:46.8%"></div>
+    <div class="tbar-fill-amber" style="width:29.3%"></div>
   </div>
-
-  <div class="tbar">
-    <div class="tbar-row"><span style="font-weight:600;color:#fff;">Progress to &#163;2,281,000 target</span><span style="color:var(--muted);font-size:.8rem;">&#163;571,831 gap to close if hot pipeline converts</span></div>
-    <div class="tbar-track">
-      <div class="tbar-fill-pink" style="width:45.2%"></div>
-      <div class="tbar-fill-amber" style="width:29.7%"></div>
-    </div>
-    <div class="tbar-meta">
-      <span><span style="color:#2ecc71;">&#9632;</span> Confirmed 45.2% (&#163;1,032,119)</span>
-      <span><span style="color:#f39c12;">&#9632;</span> Hot pipeline +29.7% (&#163;677,050)</span>
-      <span style="color:#6b8099;">Combined: 74.9% &mdash; &#163;571,831 still to find</span>
-    </div>
+  <div class="tbar-meta">
+    <span><span style="color:#2ecc71;">&#9632;</span> Confirmed 46.8% (&#163;1,066,547)</span>
+    <span><span style="color:#f39c12;">&#9632;</span> Hot pipeline +29.3% (&#163;669,325)</span>
+    <span>Combined: 76.1% - &#163;545,128 still to find</span>
   </div>
+</div>
 
-  <div class="sec-label">Last 7 days</div>
-  <h2>Stage movement &mdash; 4 to 11 August 2026</h2>
+<div class="sec-label">Stage movement</div>
+<h2>Mon 10 - Thu 13 August 2026</h2>
 
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill won">Closed Won</span><span class="badge green">1 DEAL THIS WEEK</span></div>
-    <table class="dtable">
-      <tr><td class="dn">Tibidabo</td><td class="do">Kyle Hare</td><td class="dv">&#163;5,751</td></tr>
-    </table>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill autumn">Autumn Close</span><span class="badge amber">2 DEALS</span></div>
-    <table class="dtable">
-      <tr><td class="dn">Kongsberg Nanovionics</td><td class="do">Cameron Read</td><td class="dv">&#163;9,509</td></tr>
-      <tr><td class="dn">TwinBin</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-    </table>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill prop">Proposal Sent</span><span style="font-size:.75rem;color:var(--muted);">no new deals this week</span></div>
-    <div class="sblock-empty">No deals moved into Proposal this week</div>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill eng">Engagement (Responded)</span><span class="badge blue">13 DEALS</span></div>
-    <table class="dtable">
-      <tr><td class="dn">MACOM Technology Solutions</td><td class="do">Cameron Read</td><td class="dv">&#163;10,000</td></tr>
-      <tr><td class="dn">Space Professionals</td><td class="do">Cameron Read</td><td class="dv">&#163;4,312</td></tr>
-      <tr><td class="dn">EXOBOTICS</td><td class="do">Cameron Read</td><td class="dv">&#163;2,500</td></tr>
-      <tr><td class="dn">Marconi</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Henkel</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Gpspatron</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">HEX20</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">EIDEL</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Redwire Space</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Odysight.ai</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Friction Technology</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Roke</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">CloudFerro S.A.</td><td class="do">Danny Day</td><td class="dv muted">unpriced</td></tr>
-    </table>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill disc">Discovery Call Booked</span><span style="font-size:.75rem;color:var(--muted);">no new deals this week</span></div>
-    <div class="sblock-empty">No deals moved into Discovery this week</div>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill neg">Negotiation Review</span><span style="font-size:.75rem;color:var(--muted);">no new deals this week</span></div>
-    <div class="sblock-empty">No deals moved into Negotiation this week</div>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill cold">Cold Outreach (Resourced)</span><span class="badge grey">5 DEALS</span></div>
-    <table class="dtable">
-      <tr><td class="dn">Vaccumschmelze</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Pulsar Fusion</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">Neuraspace</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">SEKO Logistics</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-      <tr><td class="dn">RBC Aerospace</td><td class="do">Cameron Read</td><td class="dv muted">unpriced</td></tr>
-    </table>
-  </div>
-
-  <div class="sblock">
-    <div class="sblock-hd"><span class="pill lost">Closed Lost</span><span style="font-size:.75rem;color:var(--muted);">no new deals this week</span></div>
-    <div class="sblock-empty">No deals closed lost this week</div>
-  </div>
-
-  <div class="sec-label">Full pipeline breakdown</div>
-  <h2>All 658 deals by stage</h2>
-  <table class="ptable">
-    <thead><tr><th>Stage</th><th>Deals</th><th>Total Value</th><th class="bw">Share of pipeline</th></tr></thead>
-    <tbody>
-      <tr><td><span class="pill won">Closed Won</span></td><td>91</td><td class="vf green">&#163;1,032,119</td><td class="bw"><div class="mb"><div class="mf g" style="width:52%"></div></div></td></tr>
-      <tr><td><span class="pill autumn">Autumn Close</span></td><td>49</td><td class="vf">&#163;420,994</td><td class="bw"><div class="mb"><div class="mf a" style="width:21%"></div></div></td></tr>
-      <tr><td><span class="pill prop">Proposal Sent</span></td><td>26</td><td class="vf">&#163;166,682</td><td class="bw"><div class="mb"><div class="mf" style="width:8.5%"></div></div></td></tr>
-      <tr><td><span class="pill eng">Engagement (Responded)</span></td><td>169</td><td class="vf">&#163;196,104</td><td class="bw"><div class="mb"><div class="mf" style="width:10%"></div></div></td></tr>
-      <tr><td><span class="pill disc">Discovery Call Booked</span></td><td>21</td><td class="vf">&#163;60,000</td><td class="bw"><div class="mb"><div class="mf" style="width:3%"></div></div></td></tr>
-      <tr><td><span class="pill neg">Negotiation Review</span></td><td>3</td><td class="vf">&#163;29,374</td><td class="bw"><div class="mb"><div class="mf" style="width:1.5%"></div></div></td></tr>
-      <tr><td><span class="pill event">Event Meeting Booked</span></td><td>2</td><td class="vf muted">&#163;0 priced</td><td class="bw"><div class="mb"></div></td></tr>
-      <tr><td><span class="pill cold">Cold Outreach (Resourced)</span></td><td>240</td><td class="vf muted">&#163;0 priced</td><td class="bw"><div class="mb"></div></td></tr>
-      <tr><td><span class="pill lost">Closed Lost</span></td><td>57</td><td class="vf red">&#163;188,725</td><td class="bw"><div class="mb"><div class="mf r" style="width:9.5%"></div></div></td></tr>
-      <tr class="tot"><td>Total</td><td>658</td><td class="vf">&#163;1,985,003</td><td class="bw"></td></tr>
-    </tbody>
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill won">Closed Won</span><span class="badge green">3 DEALS &nbsp;+&#163;34,428</span></div>
+  <table class="dtable">
+    <tr><td class="dn">Keysight</td><td class="do">Kyle Hare</td><td class="dt">Thu 13</td><td class="dv">&#163;15,078</td></tr>
+    <tr><td class="dn">SCE27 - Samtec</td><td class="do">Christie Day</td><td class="dt">Thu 13</td><td class="dv">&#163;12,948</td></tr>
+    <tr><td class="dn">SCE27 - SpaceComputer</td><td class="do">Cameron Read</td><td class="dt">Wed 12</td><td class="dv">&#163;6,402</td></tr>
   </table>
-  <div class="notice">
-    <strong>&#127881; Milestone:</strong> Confirmed revenue crossed &#163;1m this week for the first time. Active convertible pipeline (Autumn Close + Proposal + Negotiation + Discovery) is &#163;677,050 &mdash; converting it fully would take total revenue to &#163;1,709,169 (74.9% of target). The &#163;420,994 Autumn Close book remains the biggest single lever.
-  </div>
+</div>
 
-  <div class="sec-label">Team performance</div>
-  <h2>Pipeline by owner &mdash; deals and revenue at each stage</h2>
-  <div class="owner-grid">
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill prop">Proposal Sent</span><span class="badge blue">3 DEALS &nbsp;+&#163;35,870</span></div>
+  <table class="dtable">
+    <tr><td class="dn">SCE27 - CGI</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv">&#163;26,600</td></tr>
+    <tr><td class="dn">SCE27 - Qosmic</td><td class="do">Cameron Read</td><td class="dt">Tue 11</td><td class="dv">&#163;4,958</td></tr>
+    <tr><td class="dn">Space Professionals</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv">&#163;4,312</td></tr>
+  </table>
+</div>
 
-    <div class="ocard">
-      <div class="ocard-hd">
-        <div><div class="oname">Christie Day</div><div class="ototals"><strong>35 deals &nbsp;&middot;&nbsp; &#163;675,479</strong> total pipeline (excl. lost)</div></div>
-        <div class="obadges"><span class="badge green">16 CLOSED WON</span><span class="badge amber">12 AUTUMN CLOSE</span></div>
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill autumn">Autumn Close</span><span style="font-size:.75rem;color:var(--muted);">no new deals this period</span></div>
+  <div class="sblock-empty">No deals moved into Autumn Close Mon-Thu</div>
+</div>
+
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill eng">Engagement (Responded)</span><span class="badge" style="background:rgba(201,167,255,.2);color:#c9a7ff;">5 DEALS &nbsp;+&#163;25,500 priced</span></div>
+  <table class="dtable">
+    <tr><td class="dn">SCE27 - Aon</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv">&#163;10,000</td></tr>
+    <tr><td class="dn">Avio S.p.A.</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv">&#163;8,500</td></tr>
+    <tr><td class="dn">SCE27 - Antistat</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv">&#163;7,000</td></tr>
+    <tr><td class="dn">SCE27 - Hughes</td><td class="do">Cameron Read</td><td class="dt">Tue 11</td><td class="dv muted">unpriced</td></tr>
+    <tr><td class="dn">SCE27 - Roke</td><td class="do">Cameron Read</td><td class="dt">Mon 10</td><td class="dv muted">unpriced</td></tr>
+  </table>
+</div>
+
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill disc">Discovery Call Booked</span><span style="font-size:.75rem;color:var(--muted);">no new deals this period</span></div>
+  <div class="sblock-empty">No deals moved into Discovery Mon-Thu</div>
+</div>
+
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill cold">Cold Outreach (Resourced)</span><span class="badge grey">3 DEALS</span></div>
+  <table class="dtable">
+    <tr><td class="dn">SCE27 - ST Engineering IDirect</td><td class="do">Cameron Read</td><td class="dt">Wed 12</td><td class="dv muted">unpriced</td></tr>
+    <tr><td class="dn">SCE27 - GISS S.p. Z o.o.</td><td class="do">Cameron Read</td><td class="dt">Tue 11</td><td class="dv muted">unpriced</td></tr>
+    <tr><td class="dn">SCE27 - SEKO Logistics</td><td class="do">Cameron Read</td><td class="dt">Mon 10</td><td class="dv muted">unpriced</td></tr>
+  </table>
+</div>
+
+<div class="sblock" style="border-color:rgba(231,76,60,.3);">
+  <div class="sblock-hd"><span class="pill lost">Closed Lost</span><span class="badge red">3 DEALS &nbsp;-&#163;29,292 lost</span></div>
+  <table class="dtable">
+    <tr><td class="dn">SCE27 - Goodfellow</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv lost">&#163;15,000</td></tr>
+    <tr><td class="dn">SCE27 - Huber</td><td class="do">Cameron Read</td><td class="dt">Thu 13</td><td class="dv lost">&#163;14,292</td></tr>
+    <tr><td class="dn">SCE27 - BCAS Ltd</td><td class="do">Cameron Read</td><td class="dt">Tue 11</td><td class="dv muted">unpriced</td></tr>
+  </table>
+</div>
+
+<div class="notice warn">
+  <strong>3 deals closed lost this week</strong> - Goodfellow (&#163;15k) and Huber (&#163;14k) are the two material losses, both Cameron Read. Worth a quick debrief on what objections came up - both had significant value in the pipeline.
+</div>
+
+<div class="sec-label">Full pipeline breakdown</div>
+<h2>All 661 deals by stage - as of 13 August</h2>
+<table class="ptable">
+  <thead><tr><th>Stage</th><th>Deals</th><th>Total Value</th><th>Share</th></tr></thead>
+  <tbody>
+    <tr><td><span class="pill won">Closed Won</span></td><td>94</td><td class="vf green">&#163;1,066,547</td><td><div class="mb"><div class="mf g" style="width:54%"></div></div></td></tr>
+    <tr><td><span class="pill autumn">Autumn Close</span></td><td>49</td><td class="vf">&#163;407,857</td><td><div class="mb"><div class="mf a" style="width:21%"></div></div></td></tr>
+    <tr><td><span class="pill prop">Proposal Sent</span></td><td>26</td><td class="vf">&#163;179,094</td><td><div class="mb"><div class="mf" style="width:9%"></div></div></td></tr>
+    <tr><td><span class="pill eng">Engagement (Responded)</span></td><td>168</td><td class="vf">&#163;172,000</td><td><div class="mb"><div class="mf" style="width:8.7%"></div></div></td></tr>
+    <tr><td><span class="pill disc">Discovery Call Booked</span></td><td>20</td><td class="vf">&#163;60,000</td><td><div class="mb"><div class="mf" style="width:3%"></div></div></td></tr>
+    <tr><td><span class="pill neg">Negotiation Review</span></td><td>2</td><td class="vf">&#163;22,374</td><td><div class="mb"><div class="mf" style="width:1.1%"></div></div></td></tr>
+    <tr><td><span class="pill" style="background:rgba(46,204,113,.1);color:#27ae60;">Event Meeting Booked</span></td><td>2</td><td class="vf muted">&#163;0 priced</td><td><div class="mb"></div></td></tr>
+    <tr><td><span class="pill cold">Cold Outreach (Resourced)</span></td><td>241</td><td class="vf muted">&#163;0 priced</td><td><div class="mb"></div></td></tr>
+    <tr><td><span class="pill lost">Closed Lost</span></td><td>59</td><td class="vf red">&#163;218,017</td><td><div class="mb"><div class="mf r" style="width:11%"></div></div></td></tr>
+    <tr class="tot"><td>Total</td><td>661</td><td class="vf">&#163;1,987,872</td><td></td></tr>
+  </tbody>
+</table>
+<div class="notice">
+  <strong>This week in numbers:</strong> 3 Closed Won (+&#163;34,428), 3 Proposals sent (+&#163;35,870 in pipeline), 5 engaged, 3 lost (-&#163;29,292 valued). Net new confirmed revenue: +&#163;34,428. Running Closed Won total now &#163;1,066,547 - up &#163;34k from Monday's &#163;1,032k.
+</div>
+
+<div class="sec-label">Year on year</div>
+<h2>Run rate vs London 2026</h2>
+<div class="yoy-kpis">
+  <div class="ykpi hero">
+    <div class="yk-label">&#9650; Run rate vs last year</div>
+    <div class="yk-val" style="color:#2ecc71;">+12.5pp ahead</div>
+    <div class="yk-compare">
+      <div class="ykc">
+        <div class="ykc-num" style="color:var(--muted);">34.3%</div>
+        <div class="ykc-lab">London 2026<br>at this point<br>(&#163;523k of &#163;1.53m final)</div>
       </div>
-      <table class="ostage">
-        <tr><td class="sn"><span class="pill won">Closed Won</span></td><td class="sc">16 deals</td><td class="sv won">&#163;369,677</td></tr>
-        <tr><td class="sn"><span class="pill autumn">Autumn Close</span></td><td class="sc">12 deals</td><td class="sv hot">&#163;225,829</td></tr>
-        <tr><td class="sn"><span class="pill disc">Discovery Call Booked</span></td><td class="sc">4 deals</td><td class="sv warm">&#163;54,000</td></tr>
-        <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">2 deals</td><td class="sv warm">&#163;25,973</td></tr>
-        <tr><td class="sn"><span class="pill cold">Cold Outreach</span></td><td class="sc">1 deal</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr class="lost-row"><td class="sn"><span class="pill lost">Closed Lost</span></td><td class="sc" style="color:var(--red);">1 deal</td><td class="sv lost">&#163;7,533</td></tr>
-      </table>
-    </div>
-
-    <div class="ocard">
-      <div class="ocard-hd">
-        <div><div class="oname">Kyle Hare</div><div class="ototals"><strong>234 deals &nbsp;&middot;&nbsp; &#163;588,925</strong> total pipeline (excl. lost)</div></div>
-        <div class="obadges"><span class="badge green">50 CLOSED WON</span></div>
+      <div class="yk-arrow" style="color:#2ecc71;">&#8594;</div>
+      <div class="ykc">
+        <div class="ykc-num" style="color:#2ecc71;">46.8%</div>
+        <div class="ykc-lab">2027 now<br>(&#163;1.067m of<br>&#163;2.28m target)</div>
       </div>
-      <table class="ostage">
-        <tr><td class="sn"><span class="pill won">Closed Won</span></td><td class="sc">50 deals</td><td class="sv won">&#163;447,051</td></tr>
-        <tr><td class="sn"><span class="pill eng">Engagement</span></td><td class="sc">67 deals</td><td class="sv warm">&#163;85,000</td></tr>
-        <tr><td class="sn"><span class="pill autumn">Autumn Close</span></td><td class="sc">11 deals</td><td class="sv hot">&#163;23,500</td></tr>
-        <tr><td class="sn"><span class="pill neg">Negotiation Review</span></td><td class="sc">2 deals</td><td class="sv warm">&#163;22,374</td></tr>
-        <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">5 deals</td><td class="sv warm">&#163;11,000</td></tr>
-        <tr><td class="sn"><span class="pill disc">Discovery Call Booked</span></td><td class="sc">8 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr><td class="sn"><span class="pill cold">Cold Outreach</span></td><td class="sc">89 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr><td class="sn"><span class="pill event">Event Meeting</span></td><td class="sc">2 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr class="lost-row"><td class="sn"><span class="pill lost">Closed Lost</span></td><td class="sc" style="color:var(--red);">19 deals</td><td class="sv lost">&#163;84,319</td></tr>
-      </table>
     </div>
-
-    <div class="ocard">
-      <div class="ocard-hd">
-        <div><div class="oname">Cameron Read</div><div class="ototals"><strong>196 deals &nbsp;&middot;&nbsp; &#163;561,642</strong> total pipeline (excl. lost)</div></div>
-        <div class="obadges"><span class="badge blue">13 MOVES THIS WEEK</span><span class="badge amber">21 AUTUMN CLOSE</span></div>
-      </div>
-      <table class="ostage">
-        <tr><td class="sn"><span class="pill won">Closed Won</span></td><td class="sc">23 deals</td><td class="sv won">&#163;192,601</td></tr>
-        <tr><td class="sn"><span class="pill autumn">Autumn Close</span></td><td class="sc">21 deals</td><td class="sv hot">&#163;141,665</td></tr>
-        <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">13 deals</td><td class="sv warm">&#163;113,272</td></tr>
-        <tr><td class="sn"><span class="pill eng">Engagement</span></td><td class="sc">75 deals</td><td class="sv warm">&#163;101,104</td></tr>
-        <tr><td class="sn"><span class="pill neg">Negotiation Review</span></td><td class="sc">1 deal</td><td class="sv warm">&#163;7,000</td></tr>
-        <tr><td class="sn"><span class="pill disc">Discovery Call Booked</span></td><td class="sc">3 deals</td><td class="sv warm">&#163;6,000</td></tr>
-        <tr><td class="sn"><span class="pill cold">Cold Outreach</span></td><td class="sc">60 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr class="lost-row"><td class="sn"><span class="pill lost">Closed Lost</span></td><td class="sc" style="color:var(--red);">36 deals</td><td class="sv lost">&#163;91,873</td></tr>
-      </table>
-    </div>
-
-    <div class="ocard">
-      <div class="ocard-hd">
-        <div><div class="oname">Danny Day</div><div class="ototals"><strong>100 deals &nbsp;&middot;&nbsp; &#163;10,000</strong> total pipeline (excl. lost)</div></div>
-        <div class="obadges"><span class="badge grey">0 CLOSED WON</span></div>
-      </div>
-      <table class="ostage">
-        <tr><td class="sn"><span class="pill cold">Cold Outreach</span></td><td class="sc">75 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr><td class="sn"><span class="pill eng">Engagement</span></td><td class="sc">14 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr><td class="sn"><span class="pill disc">Discovery Call Booked</span></td><td class="sc">6 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-        <tr><td class="sn"><span class="pill autumn">Autumn Close</span></td><td class="sc">3 deals</td><td class="sv hot">&#163;10,000</td></tr>
-        <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">2 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-      </table>
-    </div>
-
-    <div class="ocard">
-      <div class="ocard-hd">
-        <div><div class="oname">Gen Richards</div><div class="ototals"><strong>15 deals &nbsp;&middot;&nbsp; &#163;64,227</strong> total pipeline (excl. lost)</div></div>
-        <div class="obadges"><span class="badge green">2 CLOSED WON</span></div>
-      </div>
-      <table class="ostage">
-        <tr><td class="sn"><span class="pill won">Closed Won</span></td><td class="sc">2 deals</td><td class="sv won">&#163;22,790</td></tr>
-        <tr><td class="sn"><span class="pill autumn">Autumn Close</span></td><td class="sc">2 deals</td><td class="sv hot">&#163;20,000</td></tr>
-        <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">4 deals</td><td class="sv warm">&#163;16,437</td></tr>
-        <tr><td class="sn"><span class="pill eng">Engagement</span></td><td class="sc">7 deals</td><td class="sv warm">&#163;5,000</td></tr>
-        <tr class="lost-row"><td class="sn"><span class="pill lost">Closed Lost</span></td><td class="sc" style="color:var(--red);">1 deal</td><td class="sv lost">&#163;5,000</td></tr>
-      </table>
-    </div>
-
-    <div class="ocard" style="opacity:.7;">
-      <div class="ocard-hd">
-        <div><div class="oname" style="color:var(--muted);">Camilla Johansen</div><div class="ototals"><strong>21 deals &nbsp;&middot;&nbsp; &#163;5,000</strong> total pipeline</div></div>
-        <div class="obadges"><span class="badge grey">INACTIVE OWNER</span></div>
-      </div>
-      <table class="ostage">
-        <tr><td class="sn"><span class="pill eng">Engagement</span></td><td class="sc">6 deals</td><td class="sv warm">&#163;5,000</td></tr>
-        <tr><td class="sn"><span class="pill cold">Cold Outreach</span></td><td class="sc">15 deals</td><td class="sv muted">&#163;0 priced</td></tr>
-      </table>
-    </div>
-
+    <div class="yk-sub">Up from +10.9pp on Mon. Three wins this week pushed the lead wider. At London 2026's pace from here, we added &#163;1m+ in the remaining months.</div>
   </div>
-  <div class="notice">
-    <strong>Owner watch items:</strong> Kyle Hare now leads on Closed Won volume (50 deals, &#163;447k). Christie Day leads on value per deal (&#163;23k avg). Cameron Read has the biggest Autumn Close book (21 deals, &#163;142k) and was most active this week (13 stage moves). Danny Day has 100 deals in the pipeline with zero Closed Won &mdash; his Autumn Close and Engagement deals need to start converting.
+  <div class="ykpi">
+    <div class="yk-label">YoY absolute</div>
+    <div class="yk-val" style="color:var(--pink);">+104%</div>
+    <div class="yk-sub">&#163;1,066,547 now vs &#163;523,075 at equivalent point last year. More than double last year's revenue at the same stage.</div>
   </div>
-
-  <div class="sec-label">Year on year</div>
-  <h2>2027 vs London 2026 &mdash; run rate and cumulative revenue</h2>
-
-  <div class="yoy-kpis">
-    <div class="ykpi hero">
-      <div class="yk-label">&#9650; Run rate vs last year</div>
-      <div class="yk-val" style="color:#2ecc71;">+10.9pp ahead</div>
-      <div class="yk-compare">
-        <div class="ykc">
-          <div class="ykc-num" style="color:var(--muted);">34.3%</div>
-          <div class="ykc-lab">London 2026<br>at this point<br>(&#163;523k of &#163;1.53m final)</div>
-        </div>
-        <div class="yk-arrow" style="color:#2ecc71;">&#8594;</div>
-        <div class="ykc">
-          <div class="ykc-num" style="color:#2ecc71;">45.2%</div>
-          <div class="ykc-lab">2027 now<br>(&#163;1.03m of<br>&#163;2.28m target)</div>
-        </div>
-      </div>
-      <div class="yk-sub">In June this lead was +4.7pp. It has widened to +10.9pp as the July close sprint paid off. We&#39;re now comfortably ahead of last year&#39;s pace &mdash; but the &#163;1.25m second half of 2026 London&#39;s cycle is ahead.</div>
-    </div>
-    <div class="ykpi">
-      <div class="yk-label">YoY absolute</div>
-      <div class="yk-val" style="color:var(--pink);">+97%</div>
-      <div class="yk-sub">&#163;1,032,119 confirmed now vs &#163;523,075 at equivalent point last year. Revenue nearly doubled year-on-year at this stage of the sales cycle.</div>
-    </div>
-    <div class="ykpi">
-      <div class="yk-label">Still to close vs target</div>
-      <div class="yk-val" style="color:var(--amber);">&#163;1,248,881</div>
-      <div class="yk-sub">&#163;1,032,119 of &#163;2,281,000 target. At this point last year, London 2026 went on to add a further &#163;1,003,078 &mdash; replicating that from here gets us to &#163;2.03m (89% of target).</div>
-    </div>
+  <div class="ykpi">
+    <div class="yk-label">Still to close vs target</div>
+    <div class="yk-val" style="color:var(--amber);">&#163;1,214,453</div>
+    <div class="yk-sub">London 2026 added &#163;1,003,078 from this point to show day. Replicating that gets us to &#163;2.07m - 91% of target.</div>
   </div>
+</div>
 
-  <div class="chart-wrap">
-    <div class="chart-legend">
-      <span class="cleg-pink">&#9632; Space-Comm 2027 (actual)</span>&nbsp;&nbsp;
-      <span class="cleg-blue">&#9632;&#9135; London 2026 (equiv. cycle months)</span>&nbsp;&nbsp;
-      <span class="cleg-amber">&#9135;&#9135; 2027 target &#163;2.28m</span>&nbsp;&nbsp;
-      <span class="cleg-muted">&#9135;&#9135; 2026 final &#163;1.53m</span>
-    </div>
-    <canvas id="yoyChart" height="105"></canvas>
+<div class="chart-wrap">
+  <div class="chart-legend">
+    <span class="cleg-pink">&#9632; Space-Comm 2027 (actual)</span>&nbsp;&nbsp;
+    <span class="cleg-blue">&#9135;&#9135; London 2026 (equiv. cycle months)</span>&nbsp;&nbsp;
+    <span class="cleg-amber">&#9135;&#9135; 2027 target &#163;2.28m</span>&nbsp;&nbsp;
+    <span class="cleg-muted">&#9135;&#9135; 2026 final &#163;1.53m</span>
   </div>
-  <div class="notice">
-    <strong>How to read this:</strong> The blue dashed line shows London 2026&#39;s cumulative revenue mapped to equivalent months (+12 months shift). Both lines share the same axis. We crossed &#163;1m in July &mdash; London 2026 didn&#39;t hit &#163;1m until December. The critical question is whether the Aug&ndash;Dec window matches last year&#39;s &#163;600k sprint.
-  </div>
+  <canvas id="yoyChart" height="105"></canvas>
+</div>
 
-  <div class="sec-label">Week on week</div>
-  <h2>Revenue closed each week &mdash; 2027 vs 2026 (weekly velocity)</h2>
-  <p style="font-size:.82rem;color:var(--muted);margin:-.5rem 0 1.2rem;">New revenue booked each individual week. 2026 London dates shifted +12 months. Spikes reflect bulk close sprints.</p>
-
-  <div class="chart-wrap">
-    <div class="chart-legend">
-      <span class="cleg-pink">&#9632; 2027 weekly closes</span>&nbsp;&nbsp;
-      <span class="cleg-blue">&#9135; London 2026 weekly closes (equiv. weeks)</span>&nbsp;&nbsp;
-      <span class="cleg-muted">&#9135; Today = 11 Aug &#39;26</span>
-    </div>
-    <canvas id="wowChart" height="110"></canvas>
+<div class="chart-wrap">
+  <div class="chart-legend">
+    <span class="cleg-pink">&#9632; 2027 weekly closes</span>&nbsp;&nbsp;
+    <span class="cleg-blue">&#9135; London 2026 weekly closes (equiv. weeks)</span>&nbsp;&nbsp;
+    <span class="cleg-muted">&#9135; Today = 13 Aug '26</span>
   </div>
+  <canvas id="wowChart" height="110"></canvas>
+</div>
 
 </div>
 <footer>
-  <div>Space-Comm Expo Europe &mdash; in partnership with ADS</div>
-  <div>Source: HubSpot pipeline 3602731249 &nbsp;&middot;&nbsp; Auto-generated 11 Aug 2026 &nbsp;&middot;&nbsp; L7D = stage changes 4&ndash;11 Aug 2026</div>
+  <div>Space-Comm Expo Europe - in partnership with ADS</div>
+  <div>Source: HubSpot pipeline 3602731249 &nbsp;&#183;&nbsp; One-off run 13 Aug 2026 &nbsp;&#183;&nbsp; Period: Mon 10 - Thu 13 Aug 2026</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 (function(){
-  // MoM cumulative chart
   const momLabels=["Feb '26","Mar '26","Apr '26","May '26","Jun '26","Jul '26","Aug '26★","Sep '26","Oct '26","Nov '26","Dec '26","Jan '27","Feb '27","Mar '27"];
-  const d27mom=[54998,634023,695642,716685,857723,1002178,1032119,null,null,null,null,null,null,null];
+  const d27mom=[54998,634023,695642,716685,857723,1002178,1066547,null,null,null,null,null,null,null];
   const d26mom=[null,20910,340021,422994,447309,488999,589279,694886,809861,925843,1124746,1324865,1525903,1526153];
   const tgt=momLabels.map(()=>2281000);
   const fin26=momLabels.map(()=>1526152);
-  new Chart(document.getElementById('yoyChart'),{
-    type:'line',
+  new Chart(document.getElementById('yoyChart'),{type:'line',
     data:{labels:momLabels,datasets:[
       {label:'2027',data:d27mom,borderColor:'#d40075',backgroundColor:'rgba(212,0,117,0.12)',borderWidth:3,pointRadius:4,fill:true,tension:0.25,spanGaps:false},
       {label:'London 2026',data:d26mom,borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[5,4],borderWidth:2,pointRadius:3,fill:false,tension:0.25,spanGaps:false},
@@ -393,28 +266,26 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
     ]},
     options:{responsive:true,interaction:{mode:'index',intersect:false},
       plugins:{legend:{display:false},tooltip:{backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,padding:10,
-        callbacks:{label:(c)=>{if(c.parsed.y===null)return null;return ' '+c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},
+        callbacks:{label:(c)=>{if(c.parsed.y===null)return null;return ' '+c.dataset.label+': \xA3'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},
       scales:{x:{grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',font:{size:11}}},
-        y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>{if(v>=1000000)return '£'+(v/1000000).toFixed(1)+'m';return '£'+(v/1000).toFixed(0)+'k';}}}}}
+        y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>{if(v>=1000000)return '\xA3'+(v/1000000).toFixed(1)+'m';return '\xA3'+(v/1000).toFixed(0)+'k';}}}}}
   });
 
-  // WoW weekly chart
-  const allWeeks=["23 Feb","2 Mar","9 Mar","16 Mar","23 Mar","24 Mar","30 Mar","31 Mar","6 Apr","7 Apr","13 Apr","14 Apr","20 Apr","21 Apr","27 Apr","28 Apr","4 May","5 May","11 May","12 May","18 May","19 May","25 May","26 May","1 Jun","2 Jun","8 Jun","9 Jun","15 Jun","16 Jun","22 Jun","23 Jun","29 Jun","30 Jun","6 Jul","7 Jul","13 Jul","14 Jul","20 Jul","21 Jul","27 Jul","28 Jul","3 Aug★","4 Aug","10 Aug","11 Aug","18 Aug","25 Aug","1 Sep","8 Sep","15 Sep","22 Sep","29 Sep","6 Oct","13 Oct","20 Oct","27 Oct","3 Nov","10 Nov","17 Nov","24 Nov","1 Dec","8 Dec","15 Dec","22 Dec","29 Dec","5 Jan","12 Jan","19 Jan","26 Jan","2 Feb","9 Feb","16 Feb","23 Feb","2 Mar"];
-  const d27wow=[54998,528629,38485,6102,3234,null,9308,null,0,null,12000,null,44327,null,5292,null,0,null,8500,null,12543,null,0,null,33265,null,0,null,0,null,18773,null,89000,null,39564,null,42175,null,40452,null,22264,null,29941,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
+  const allWeeks=["23 Feb","2 Mar","9 Mar","16 Mar","23 Mar","24 Mar","30 Mar","31 Mar","6 Apr","7 Apr","13 Apr","14 Apr","20 Apr","21 Apr","27 Apr","28 Apr","4 May","5 May","11 May","12 May","18 May","19 May","25 May","26 May","1 Jun","2 Jun","8 Jun","9 Jun","15 Jun","16 Jun","22 Jun","23 Jun","29 Jun","30 Jun","6 Jul","7 Jul","13 Jul","14 Jul","20 Jul","21 Jul","27 Jul","28 Jul","3 Aug","4 Aug","10 Aug★","11 Aug","18 Aug","25 Aug","1 Sep","8 Sep","15 Sep","22 Sep","29 Sep","6 Oct","13 Oct","20 Oct","27 Oct","3 Nov","10 Nov","17 Nov","24 Nov","1 Dec","8 Dec","15 Dec","22 Dec","29 Dec","5 Jan","12 Jan","19 Jan","26 Jan","2 Feb","9 Feb","16 Feb","23 Feb","2 Mar"];
+  const d27wow=[54998,528629,38485,6102,3234,null,9308,null,0,null,12000,null,44327,null,5292,null,0,null,8500,null,12543,null,0,null,33265,null,0,null,0,null,18773,null,89000,null,39564,null,42175,null,40452,null,22264,null,29941,null,34428,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null];
   const d26wow=[null,null,null,null,null,15009,null,5901,null,305554,null,5651,null,7906,null,0,null,0,null,10061,null,67746,null,5166,null,6177,null,5777,null,12361,null,0,null,0,null,27196,null,10460,null,0,null,4034,null,0,null,34076,16024,50180,1750,1000,43583,7248,52026,12603,28899,36412,37061,27038,54547,25000,9397,11824,30838,151556,0,4686,31898,40802,77989,49429,100920,35941,58894,5284,250];
   const todayIdx=44;
   const todayLine={id:'todayLine',afterDraw(chart){const{ctx,chartArea,scales}=chart;const x=scales.x.getPixelForValue(todayIdx);ctx.save();ctx.strokeStyle='#d40075';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(x,chartArea.top);ctx.lineTo(x,chartArea.bottom);ctx.stroke();ctx.fillStyle='#d40075';ctx.font='600 10px Inter,sans-serif';ctx.fillText('Today',x+4,chartArea.top+12);ctx.restore();}};
-  new Chart(document.getElementById('wowChart'),{
-    type:'bar',plugins:[todayLine],
+  new Chart(document.getElementById('wowChart'),{type:'bar',plugins:[todayLine],
     data:{labels:allWeeks,datasets:[
       {label:'2027 closes',data:d27wow,backgroundColor:'rgba(212,0,117,0.75)',borderColor:'#d40075',borderWidth:0,borderRadius:3,order:1},
       {label:'London 2026',data:d26wow,type:'line',borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[4,3],borderWidth:2,pointRadius:2,pointBackgroundColor:'#0093d3',fill:false,tension:0.2,spanGaps:true,order:0}
     ]},
     options:{responsive:true,interaction:{mode:'index',intersect:false},
       plugins:{legend:{display:false},tooltip:{backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,padding:10,
-        callbacks:{title:(i)=>'Week of '+i[0].label,label:(c)=>{if(c.parsed.y===null||c.parsed.y===0)return null;return ' '+c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},
+        callbacks:{title:(i)=>'Week of '+i[0].label,label:(c)=>{if(c.parsed.y===null||c.parsed.y===0)return null;return ' '+c.dataset.label+': \xA3'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},
       scales:{x:{grid:{color:'rgba(26,74,122,0.25)'},ticks:{color:'#6b8099',font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:20}},
-        y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>v>=1000?'£'+(v/1000).toFixed(0)+'k':'£'+v}}}}
+        y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>v>=1000?'\xA3'+(v/1000).toFixed(0)+'k':'\xA3'+v}}}}
   });
 })();
 </script>
