@@ -89,6 +89,24 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margi
 .chart-wrap{background:var(--navy);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.5rem 1rem;margin:0 0 1.5rem}
 .chart-legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.78rem}
 .cleg-pink{color:#d40075}.cleg-blue{color:#0093d3}.cleg-amber{color:#f39c12}.cleg-muted{color:var(--muted)}
+
+.period-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:1.5rem}
+.pcard{background:var(--navy);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem}
+.pcard.hero{border-color:var(--green);background:linear-gradient(135deg,#0f2035 60%,rgba(46,204,113,.06))}
+.pk-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:.8rem}
+.pk-row{display:flex;gap:.8rem;align-items:flex-start;flex-wrap:wrap}
+.pk-col{flex:1;min-width:70px}
+.pk-col.right{text-align:right;flex:1.2}
+.pk-year{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem}
+.pk-val{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:800;line-height:1}
+.pk-val.muted{color:var(--muted)}
+.pk-change{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800}
+.pk-pct{font-size:.85rem;font-weight:700;margin:.1rem 0 .3rem}
+.pk-note{font-size:.7rem;color:var(--muted);line-height:1.4}
+.pk-change.green,.pk-pct.green{color:#2ecc71}
+.pk-change.red,.pk-pct.red{color:#e74c3c}
+@media(max-width:700px){.period-grid{grid-template-columns:1fr}}
+
 footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);flex-wrap:wrap;gap:.5rem}
 @media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.owner-grid{grid-template-columns:1fr}.yoy-kpis{grid-template-columns:1fr}}
 </style>
@@ -307,6 +325,73 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
   </div>
 
 </div>
+
+
+  <div class="sec-label">Period comparisons</div>
+  <h2>This week vs MTD vs YTD &mdash; 2027 vs 2026 equivalent</h2>
+  <div class="period-grid">
+
+    <div class="pcard">
+      <div class="pk-label">This week (14&ndash;20 Aug)</div>
+      <div class="pk-row">
+        <div class="pk-col">
+          <div class="pk-year">2027</div>
+          <div class="pk-val">&#163;6,402</div>
+        </div>
+        <div class="pk-col">
+          <div class="pk-year">2026 equiv.</div>
+          <div class="pk-val muted">&#163;29,936</div>
+        </div>
+        <div class="pk-col right">
+          <div class="pk-change red">-&#163;23,534</div>
+          <div class="pk-pct red">-79%</div>
+          <div class="pk-note">Quieter close week vs last year&#39;s Aug sprint</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="pk-label">Month to date (1&ndash;20 Aug)</div>
+      <div class="pk-row">
+        <div class="pk-col">
+          <div class="pk-year">2027</div>
+          <div class="pk-val">&#163;93,322</div>
+        </div>
+        <div class="pk-col">
+          <div class="pk-year">2026 equiv.</div>
+          <div class="pk-val muted">&#163;46,889</div>
+        </div>
+        <div class="pk-col right">
+          <div class="pk-change green">+&#163;46,433</div>
+          <div class="pk-pct green">+99%</div>
+          <div class="pk-note">Nearly double last year&#39;s August MTD</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard hero">
+      <div class="pk-label">Year to date (Jan&ndash;20 Aug)</div>
+      <div class="pk-row">
+        <div class="pk-col">
+          <div class="pk-year">2027</div>
+          <div class="pk-val">&#163;1,072,949</div>
+        </div>
+        <div class="pk-col">
+          <div class="pk-year">2026 equiv.</div>
+          <div class="pk-val muted">&#163;531,854</div>
+        </div>
+        <div class="pk-col right">
+          <div class="pk-change green">+&#163;541,095</div>
+          <div class="pk-pct green">+102%</div>
+          <div class="pk-note">More than double last year&#39;s YTD at same point</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="notice">
+    <strong>How to read this:</strong> This week&#39;s close (&#163;6k) looks weak against last year&#39;s equivalent week (&#163;29.9k) &mdash; but that comparison is noisy at the weekly level. The MTD (+99%) and YTD (+102%) tell the real story: we are running at double last year&#39;s revenue pace at every time horizon that matters.
+  </div>
 
 <div class="sec-label">Year on year</div>
 <h2>2027 vs London 2026 - run rate</h2>
