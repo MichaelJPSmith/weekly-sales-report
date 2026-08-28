@@ -107,6 +107,18 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margi
 @media(max-width:700px){.period-grid{grid-template-columns:1fr}}
 footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);flex-wrap:wrap;gap:.5rem}
 @media(max-width:700px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.owner-grid{grid-template-columns:1fr}.yoy-kpis{grid-template-columns:1fr}}
+
+/* ── Trading Report section ── */
+.trd-wrap{background:var(--navy);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:2rem}
+.trd-inputs{display:flex;gap:1.2rem;margin-bottom:1.2rem;flex-wrap:wrap;align-items:flex-end}
+.trd-field{display:flex;flex-direction:column;gap:.3rem}
+.trd-field label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.trd-field input{background:#0a1a30;border:1px solid var(--border);border-radius:6px;color:#e8f0f8;font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;padding:.45rem .8rem;width:160px}
+.trd-field input:focus{outline:none;border-color:var(--pink)}
+.trd-box{background:#050e1a;border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem;font-family:'Space Grotesk',sans-serif;white-space:pre-wrap;font-size:.87rem;line-height:1.8;color:#d4e4f5;margin-bottom:1rem;min-height:200px}
+.trd-copy{background:var(--pink);color:#fff;border:none;border-radius:6px;padding:.55rem 1.5rem;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:background .2s}
+.trd-copy:hover{background:#b5006a}
+.trd-copy.copied{background:#2ecc71}
 </style>
 </head>
 <body>
@@ -265,7 +277,25 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
     <span class="cleg-muted">&#9135; Today</span>
   </div>
   <canvas id="wowChart" height="110"></canvas>
-</div><div class="sec-label">Full pipeline breakdown</div>
+</div>
+<div class="sec-label">Trading report</div>
+<h2>Copy-ready commentary for board / PE comms</h2>
+<div class="trd-wrap">
+  <div class="trd-inputs">
+    <div class="trd-field">
+      <label>Monthly target (£) — update each month</label>
+      <input type="number" id="trd-mtarget" placeholder="130000" value="130000">
+    </div>
+    <div class="trd-field">
+      <label>Expected EOM additional rev (£)</label>
+      <input type="number" id="trd-eom" placeholder="5000" value="5000">
+    </div>
+  </div>
+  <div class="trd-box" id="trd-output"></div>
+  <button class="trd-copy" id="trd-copy-btn" onclick="copyTradingReport()">Copy to clipboard</button>
+</div>
+
+<div class="sec-label">Full pipeline breakdown</div>
 <h2>Pipeline by stage (as of last full pull)</h2>
 <table class="ptable">
   <thead><tr><th>Stage</th><th>Deals</th><th>Total Value</th><th>Share</th></tr></thead>
@@ -398,6 +428,72 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
     {label:'London 2026',data:w26,type:'line',borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[4,3],borderWidth:2,pointRadius:2,pointBackgroundColor:'#0093d3',fill:false,tension:0.2,spanGaps:true,order:0}
   ]},options:{responsive:true,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,padding:10,callbacks:{title:(i)=>'Week of '+i[0].label,label:(c)=>{if(c.parsed.y===null||c.parsed.y===0)return null;return ' '+c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},scales:{x:{grid:{color:'rgba(26,74,122,0.25)'},ticks:{color:'#6b8099',font:{size:10},maxRotation:45,autoSkip:false}},y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>v>=1000?'£'+(v/1000).toFixed(0)+'k':'£'+v}}}}});
 })();
+
+// ── Trading Report ──────────────────────────────────────────────────────────
+const trdData = {
+  wtd: 42920,
+  mtd: 113691, mtdYoyPct: 29,
+  ytd: 1115869, ytdYoyPct: 95,
+  targetPct: 48.9, cwTotal: 1115869,
+  totalTarget: 2281000,
+  month: 'Aug',
+  deals: [
+    {name:'Space Park Leicester', value:12840},
+    {name:'Tronosjet', value:9711},
+    {name:'BOC', value:11474},
+    {name:'Milexia Group', value:8895}
+  ]
+};
+
+function fmtGbp(n){return '\u00a3'+Math.round(n).toLocaleString('en-GB');}
+function fmtKgbp(n){return '\u00a3'+(n/1000).toFixed(1)+'k';}
+
+function buildTradingReport(){
+  const mt = parseInt(document.getElementById('trd-mtarget').value)||130000;
+  const eom = parseInt(document.getElementById('trd-eom').value)||0;
+  const mtPct = ((trdData.mtd/mt)*100).toFixed(2);
+  const extrap = trdData.mtd + eom;
+  const dealLines = trdData.deals.map(d=>d.name+' '+fmtGbp(d.value)).join('\n');
+
+  const commentary = 'Trading remains strong, with '+fmtGbp(trdData.cwTotal)+' closed to date, representing '+
+    trdData.targetPct+'% of the '+fmtGbp(trdData.totalTarget)+' target and tracking '+
+    trdData.ytdYoyPct+'% ahead of the same point last year. This week delivered '+
+    fmtKgbp(trdData.wtd)+' across '+trdData.deals.length+' new wins, maintaining positive momentum.';
+
+  const out =
+    'Trading:\n\n'+
+    '\u2022 WTD Rev: '+fmtGbp(trdData.wtd)+'\n'+
+    '\u2022 MTD Rev: '+fmtGbp(trdData.mtd)+' | Up '+trdData.mtdYoyPct+'% YoY\n'+
+    '\u2022 MTD Target: '+mtPct+'% vs Target '+fmtGbp(mt)+'\n'+
+    '\u2022 Expected end of month add. rev: '+fmtGbp(eom)+'\n'+
+    '\u2022 '+trdData.month+' Extrap: '+fmtGbp(extrap)+'\n\n'+
+    'Sales Commentary:\n'+commentary+'\n\n'+
+    'Contracts in\n'+dealLines;
+
+  document.getElementById('trd-output').textContent = out;
+  try{localStorage.setItem('sc_mtarget_'+trdData.month, mt);}catch(e){}
+}
+
+function copyTradingReport(){
+  const text = document.getElementById('trd-output').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.getElementById('trd-copy-btn');
+    btn.textContent = '\u2713 Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy to clipboard';btn.classList.remove('copied');},2000);
+  });
+}
+
+(function initTrd(){
+  try{
+    const saved = localStorage.getItem('sc_mtarget_'+trdData.month);
+    if(saved) document.getElementById('trd-mtarget').value = saved;
+  }catch(e){}
+  buildTradingReport();
+  document.getElementById('trd-mtarget').addEventListener('input', buildTradingReport);
+  document.getElementById('trd-eom').addEventListener('input', buildTradingReport);
+})();
+
 </script>
 </body>
 </html>
