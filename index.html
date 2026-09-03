@@ -119,6 +119,25 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
 .trd-copy{background:var(--pink);color:#fff;border:none;border-radius:6px;padding:.55rem 1.5rem;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:background .2s}
 .trd-copy:hover{background:#b5006a}
 .trd-copy.copied{background:#2ecc71}
+
+/* ── Weekly tracker table ── */
+.trk-scroll{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
+.trktable{width:100%;border-collapse:collapse;min-width:920px;background:var(--navy)}
+.trktable thead th{position:sticky;top:0;background:#0a1a30;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right;padding:.55rem .8rem;border-bottom:1px solid var(--border);white-space:nowrap}
+.trktable thead th:first-child,.trktable thead th:nth-child(2){text-align:left}
+.trktable td{padding:.45rem .8rem;border-bottom:1px solid rgba(26,74,122,.3);font-size:.78rem;text-align:right;white-space:nowrap;color:#dce8f5}
+.trktable td.trk-wk{text-align:left;font-weight:700;color:#fff}
+.trktable td.trk-d{text-align:left;color:var(--muted)}
+.trktable tr.trk-now td{background:rgba(212,0,117,.1);font-weight:700}
+.trktable tr.trk-now td.trk-wk{color:var(--pink)}
+.trktable tr.trk-future td{color:var(--muted);opacity:.55}
+.trk-g{color:#2ecc71;font-weight:700}
+.trk-r{color:#e74c3c;font-weight:700}
+.trk-wrap-outer{margin-bottom:1.5rem}
+.trk-note{font-size:.72rem;color:var(--muted);margin:.7rem 0 0}
+.chart-copy{background:transparent;color:var(--blue);border:1px solid var(--border);border-radius:6px;padding:.4rem 1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.78rem;cursor:pointer;transition:.2s;margin-top:.9rem;display:block}
+.chart-copy:hover{background:rgba(0,147,211,.1)}
+.chart-copy.copied{background:rgba(46,204,113,.15);color:#2ecc71;border-color:#2ecc71}
 </style>
 </head>
 <body>
@@ -260,12 +279,75 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
 
 <div class="chart-wrap">
   <div class="chart-legend">
-    <span class="cleg-pink">&#9632; Space-Comm 2027</span>&nbsp;&nbsp;
-    <span class="cleg-blue">&#9135;&#9135; London 2026 (equiv. months)</span>&nbsp;&nbsp;
+    <span class="cleg-pink">&#9632; Space-Comm 2027 (cumulative)</span>&nbsp;&nbsp;
+    <span class="cleg-blue">&#9135;&#9135; London 2026 (equiv. weeks)</span>&nbsp;&nbsp;
     <span class="cleg-amber">&#9135;&#9135; 2027 target &#163;2.28m</span>&nbsp;&nbsp;
     <span class="cleg-muted">&#9135;&#9135; 2026 final &#163;1.53m</span>
   </div>
   <canvas id="yoyChart" height="105"></canvas>
+  <button class="chart-copy" id="yoyCopyBtn" onclick="copyChartImage('yoyChart','yoyCopyBtn')">Copy chart to clipboard</button>
+</div>
+
+<div class="sec-label">Weekly tracker</div>
+<h2>Week by week &#8212; 2026 actuals, 2027 target &amp; actuals (Fri-Thu weeks)</h2>
+<div class="trk-wrap-outer">
+<div class="trk-scroll"><table class="trktable">
+<thead><tr><th>Week</th><th>Wk start</th><th>2026 Wk Rev</th><th>2026 Cum</th><th>2027 Wk Target</th><th>2027 Cum Target</th><th>2027 Actual Wk</th><th>2027 Actual Cum</th><th>YoY vs 2026</th><th>vs Target</th></tr></thead>
+<tbody>
+<tr><td class="trk-wk">Wk -1</td><td class="trk-d">20 Feb '26</td><td>£0</td><td>£0</td><td>&mdash;</td><td>&mdash;</td><td>£45,046</td><td>£45,046</td><td><span class="trk-g">+£45,046</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 1</td><td class="trk-d">27 Feb '26</td><td>£0</td><td>£0</td><td>&mdash;</td><td>&mdash;</td><td>£493,377</td><td>£538,423</td><td><span class="trk-g">+£538,423</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 2</td><td class="trk-d">6 Mar '26</td><td>£0</td><td>£0</td><td>&mdash;</td><td>&mdash;</td><td>£26,462</td><td>£564,885</td><td><span class="trk-g">+£564,885</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 3</td><td class="trk-d">13 Mar '26</td><td>£15,009</td><td>£15,009</td><td>&mdash;</td><td>&mdash;</td><td>£18,124</td><td>£583,010</td><td><span class="trk-g">+£568,001</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 4</td><td class="trk-d">20 Mar '26</td><td>£5,901</td><td>£20,910</td><td>&mdash;</td><td>&mdash;</td><td>£3,234</td><td>£586,244</td><td><span class="trk-g">+£565,334</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 5</td><td class="trk-d">27 Mar '26</td><td>£305,554</td><td>£326,464</td><td>&mdash;</td><td>&mdash;</td><td>£9,308</td><td>£595,552</td><td><span class="trk-g">+£269,088</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 6</td><td class="trk-d">3 Apr '26</td><td>£5,651</td><td>£332,115</td><td>&mdash;</td><td>&mdash;</td><td>£0</td><td>£595,552</td><td><span class="trk-g">+£263,437</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 7</td><td class="trk-d">10 Apr '26</td><td>£7,906</td><td>£340,021</td><td>&mdash;</td><td>&mdash;</td><td>£0</td><td>£595,552</td><td><span class="trk-g">+£255,531</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 8</td><td class="trk-d">17 Apr '26</td><td>£0</td><td>£340,021</td><td>&mdash;</td><td>&mdash;</td><td>£53,827</td><td>£649,378</td><td><span class="trk-g">+£309,357</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 9</td><td class="trk-d">24 Apr '26</td><td>£0</td><td>£340,021</td><td>&mdash;</td><td>&mdash;</td><td>£46,263</td><td>£695,642</td><td><span class="trk-g">+£355,621</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 10</td><td class="trk-d">1 May '26</td><td>£10,061</td><td>£350,082</td><td>&mdash;</td><td>&mdash;</td><td>£0</td><td>£695,642</td><td><span class="trk-g">+£345,560</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 11</td><td class="trk-d">8 May '26</td><td>£67,746</td><td>£417,828</td><td>&mdash;</td><td>&mdash;</td><td>£8,500</td><td>£704,142</td><td><span class="trk-g">+£286,314</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 12</td><td class="trk-d">15 May '26</td><td>£5,166</td><td>£422,994</td><td>&mdash;</td><td>&mdash;</td><td>£12,543</td><td>£716,684</td><td><span class="trk-g">+£293,690</span></td><td>&mdash;</td></tr>
+<tr><td class="trk-wk">Wk 13</td><td class="trk-d">22 May '26</td><td>£6,177</td><td>£429,171</td><td>£30,000</td><td>£30,000</td><td>£0</td><td>£716,684</td><td><span class="trk-g">+£287,513</span></td><td>2389%</td></tr>
+<tr><td class="trk-wk">Wk 14</td><td class="trk-d">29 May '26</td><td>£5,777</td><td>£434,948</td><td>£8,156</td><td>£38,156</td><td>£33,265</td><td>£749,950</td><td><span class="trk-g">+£315,002</span></td><td>1965%</td></tr>
+<tr><td class="trk-wk">Wk 15</td><td class="trk-d">5 Jun '26</td><td>£12,361</td><td>£447,309</td><td>£17,451</td><td>£55,607</td><td>£0</td><td>£749,950</td><td><span class="trk-g">+£302,641</span></td><td>1349%</td></tr>
+<tr><td class="trk-wk">Wk 16</td><td class="trk-d">12 Jun '26</td><td>£0</td><td>£447,309</td><td>£0</td><td>£55,607</td><td>£0</td><td>£749,950</td><td><span class="trk-g">+£302,641</span></td><td>1349%</td></tr>
+<tr><td class="trk-wk">Wk 17</td><td class="trk-d">19 Jun '26</td><td>£0</td><td>£447,309</td><td>£0</td><td>£55,607</td><td>£18,773</td><td>£768,722</td><td><span class="trk-g">+£321,413</span></td><td>1382%</td></tr>
+<tr><td class="trk-wk">Wk 18</td><td class="trk-d">26 Jun '26</td><td>£27,196</td><td>£474,505</td><td>£38,394</td><td>£94,001</td><td>£0</td><td>£768,722</td><td><span class="trk-g">+£294,217</span></td><td>818%</td></tr>
+<tr><td class="trk-wk">Wk 19</td><td class="trk-d">3 Jul '26</td><td>£10,460</td><td>£484,965</td><td>£54,126</td><td>£148,127</td><td>£128,564</td><td>£897,286</td><td><span class="trk-g">+£412,321</span></td><td>606%</td></tr>
+<tr><td class="trk-wk">Wk 20</td><td class="trk-d">10 Jul '26</td><td>£0</td><td>£484,965</td><td>£0</td><td>£148,127</td><td>£0</td><td>£897,286</td><td><span class="trk-g">+£412,321</span></td><td>606%</td></tr>
+<tr><td class="trk-wk">Wk 21</td><td class="trk-d">17 Jul '26</td><td>£4,034</td><td>£488,999</td><td>£20,874</td><td>£169,001</td><td>£42,175</td><td>£939,462</td><td><span class="trk-g">+£450,463</span></td><td>556%</td></tr>
+<tr><td class="trk-wk">Wk 22</td><td class="trk-d">24 Jul '26</td><td>£0</td><td>£488,999</td><td>£0</td><td>£169,001</td><td>£62,716</td><td>£1,002,178</td><td><span class="trk-g">+£513,179</span></td><td>593%</td></tr>
+<tr><td class="trk-wk">Wk 23</td><td class="trk-d">31 Jul '26</td><td>£34,076</td><td>£523,075</td><td>£43,215</td><td>£212,216</td><td>£29,941</td><td>£1,032,118</td><td><span class="trk-g">+£509,043</span></td><td>486%</td></tr>
+<tr><td class="trk-wk">Wk 24</td><td class="trk-d">7 Aug '26</td><td>£16,024</td><td>£539,099</td><td>£20,322</td><td>£232,538</td><td>£34,428</td><td>£1,066,546</td><td><span class="trk-g">+£527,447</span></td><td>459%</td></tr>
+<tr><td class="trk-wk">Wk 25</td><td class="trk-d">14 Aug '26</td><td>£50,180</td><td>£589,279</td><td>£63,638</td><td>£296,176</td><td>£6,402</td><td>£1,072,948</td><td><span class="trk-g">+£483,669</span></td><td>362%</td></tr>
+<tr><td class="trk-wk">Wk 26</td><td class="trk-d">21 Aug '26</td><td>£1,750</td><td>£591,029</td><td>£2,219</td><td>£298,395</td><td>£42,920</td><td>£1,115,868</td><td><span class="trk-g">+£524,839</span></td><td>374%</td></tr>
+<tr class="trk-now"><td class="trk-wk">Wk 27</td><td class="trk-d">28 Aug '26</td><td>£1,000</td><td>£592,029</td><td>£1,268</td><td>£299,663</td><td>£0</td><td>£1,115,868</td><td><span class="trk-g">+£523,839</span></td><td>372%</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 28</td><td class="trk-d">4 Sep '26</td><td>£43,583</td><td>£635,612</td><td>£29,610</td><td>£329,273</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 29</td><td class="trk-d">11 Sep '26</td><td>£7,248</td><td>£642,860</td><td>£4,924</td><td>£334,197</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 30</td><td class="trk-d">18 Sep '26</td><td>£52,026</td><td>£694,886</td><td>£35,347</td><td>£369,544</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 31</td><td class="trk-d">25 Sep '26</td><td>£12,603</td><td>£707,489</td><td>£8,563</td><td>£378,107</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 32</td><td class="trk-d">2 Oct '26</td><td>£28,899</td><td>£736,388</td><td>£50,718</td><td>£428,825</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 33</td><td class="trk-d">9 Oct '26</td><td>£36,412</td><td>£772,800</td><td>£63,903</td><td>£492,728</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 34</td><td class="trk-d">16 Oct '26</td><td>£37,061</td><td>£809,861</td><td>£65,042</td><td>£557,770</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 35</td><td class="trk-d">23 Oct '26</td><td>£27,038</td><td>£836,899</td><td>£47,452</td><td>£605,222</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 36</td><td class="trk-d">30 Oct '26</td><td>£54,547</td><td>£891,446</td><td>£62,071</td><td>£667,293</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 37</td><td class="trk-d">6 Nov '26</td><td>£25,000</td><td>£916,446</td><td>£28,449</td><td>£695,742</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 38</td><td class="trk-d">13 Nov '26</td><td>£9,397</td><td>£925,843</td><td>£10,693</td><td>£706,435</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 39</td><td class="trk-d">20 Nov '26</td><td>£11,824</td><td>£937,667</td><td>£13,455</td><td>£719,890</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 40</td><td class="trk-d">27 Nov '26</td><td>£30,838</td><td>£968,505</td><td>£35,092</td><td>£754,982</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 41</td><td class="trk-d">4 Dec '26</td><td>£151,556</td><td>£1,120,061</td><td>£210,496</td><td>£965,478</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 42</td><td class="trk-d">11 Dec '26</td><td>£0</td><td>£1,120,061</td><td>£0</td><td>£965,478</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 43</td><td class="trk-d">18 Dec '26</td><td>£4,686</td><td>£1,124,747</td><td>£6,508</td><td>£971,986</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 44</td><td class="trk-d">25 Dec '26</td><td>£31,898</td><td>£1,156,645</td><td>£44,303</td><td>£1,016,289</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 45</td><td class="trk-d">1 Jan '27</td><td>£40,802</td><td>£1,197,447</td><td>£40,228</td><td>£1,056,517</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 46</td><td class="trk-d">8 Jan '27</td><td>£77,989</td><td>£1,275,436</td><td>£76,892</td><td>£1,133,409</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 47</td><td class="trk-d">15 Jan '27</td><td>£49,429</td><td>£1,324,865</td><td>£48,734</td><td>£1,182,143</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 48</td><td class="trk-d">22 Jan '27</td><td>£100,920</td><td>£1,425,785</td><td>£99,501</td><td>£1,281,644</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 49</td><td class="trk-d">29 Jan '27</td><td>£35,941</td><td>£1,461,726</td><td>£95,339</td><td>£1,376,983</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 50</td><td class="trk-d">5 Feb '27</td><td>£58,894</td><td>£1,520,620</td><td>£156,226</td><td>£1,533,209</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr class="trk-future"><td class="trk-wk">Wk 51</td><td class="trk-d">12 Feb '27</td><td>£5,284</td><td>£1,525,904</td><td>£14,017</td><td>£1,547,226</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+</tbody></table></div>
+<p class="trk-note">2026 figures: London 2026 equivalent weeks (historical). 2027 target = phased weekly split of the &#163;2.28m exhibitor revenue target. &mdash; shown for pre-season weeks with no phased target. 2027 actuals update from HubSpot Closed Won each run. Highlighted row = current week.</p>
 </div>
 
 <div class="sec-label">Week on week velocity</div>
@@ -407,16 +489,16 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 (function(){
-  const ml=["Feb '26","Mar '26","Apr '26","May '26","Jun '26","Jul '26","Aug '26★","Sep '26","Oct '26","Nov '26","Dec '26","Jan '27","Feb '27","Mar '27"];
-  const d27=[45046,634023,695642,716685,768723,1002178,1115869,null,null,null,null,null,null,null];
-  const d26=[null,20910,340021,422994,447309,488999,589279,694886,809861,925843,1124746,1324865,1525903,1526153];
-  const tgt=ml.map(()=>2281000),fin=ml.map(()=>1526152);
-  new Chart(document.getElementById('yoyChart'),{type:'line',data:{labels:ml,datasets:[
-    {label:'2027',data:d27,borderColor:'#d40075',backgroundColor:'rgba(212,0,117,0.12)',borderWidth:3,pointRadius:4,fill:true,tension:0.25,spanGaps:false},
-    {label:'London 2026',data:d26,borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[5,4],borderWidth:2,pointRadius:3,fill:false,tension:0.25,spanGaps:false},
-    {label:'Target',data:tgt,borderColor:'#f39c12',backgroundColor:'transparent',borderDash:[8,4],borderWidth:2,pointRadius:0,fill:false},
-    {label:'2026 Final',data:fin,borderColor:'#6b8099',backgroundColor:'transparent',borderDash:[3,3],borderWidth:1,pointRadius:0,fill:false}
-  ]},options:{responsive:true,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,padding:10,callbacks:{label:(c)=>{if(c.parsed.y===null)return null;return ' '+c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},scales:{x:{grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',font:{size:11}}},y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>v>=1e6?'£'+(v/1e6).toFixed(1)+'m':'£'+(v/1000).toFixed(0)+'k'}}}}});
+  const wl=["Wk -1 (20 Feb)", "Wk 1 (27 Feb)", "Wk 2 (6 Mar)", "Wk 3 (13 Mar)", "Wk 4 (20 Mar)", "Wk 5 (27 Mar)", "Wk 6 (3 Apr)", "Wk 7 (10 Apr)", "Wk 8 (17 Apr)", "Wk 9 (24 Apr)", "Wk 10 (1 May)", "Wk 11 (8 May)", "Wk 12 (15 May)", "Wk 13 (22 May)", "Wk 14 (29 May)", "Wk 15 (5 Jun)", "Wk 16 (12 Jun)", "Wk 17 (19 Jun)", "Wk 18 (26 Jun)", "Wk 19 (3 Jul)", "Wk 20 (10 Jul)", "Wk 21 (17 Jul)", "Wk 22 (24 Jul)", "Wk 23 (31 Jul)", "Wk 24 (7 Aug)", "Wk 25 (14 Aug)", "Wk 26 (21 Aug)", "Wk 27 (28 Aug)", "Wk 28 (4 Sep)", "Wk 29 (11 Sep)", "Wk 30 (18 Sep)", "Wk 31 (25 Sep)", "Wk 32 (2 Oct)", "Wk 33 (9 Oct)", "Wk 34 (16 Oct)", "Wk 35 (23 Oct)", "Wk 36 (30 Oct)", "Wk 37 (6 Nov)", "Wk 38 (13 Nov)", "Wk 39 (20 Nov)", "Wk 40 (27 Nov)", "Wk 41 (4 Dec)", "Wk 42 (11 Dec)", "Wk 43 (18 Dec)", "Wk 44 (25 Dec)", "Wk 45 (1 Jan)", "Wk 46 (8 Jan)", "Wk 47 (15 Jan)", "Wk 48 (22 Jan)", "Wk 49 (29 Jan)", "Wk 50 (5 Feb)", "Wk 51 (12 Feb)"];
+  const wd27=[45046, 538423, 564885, 583010, 586244, 595552, 595552, 595552, 649378, 695642, 695642, 704142, 716684, 716684, 749950, 749950, 749950, 768722, 768722, 897286, 897286, 939462, 1002178, 1032118, 1066546, 1072948, 1115868, 1115868, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+  const wd26=[0, 0, 0, 15009, 20910, 326464, 332115, 340021, 340021, 340021, 350082, 417828, 422994, 429171, 434948, 447309, 447309, 447309, 474505, 484965, 484965, 488999, 488999, 523075, 539099, 589279, 591029, 592029, 635612, 642860, 694886, 707489, 736388, 772800, 809861, 836899, 891446, 916446, 925843, 937667, 968505, 1120061, 1120061, 1124747, 1156645, 1197447, 1275436, 1324865, 1425785, 1461726, 1520620, 1525904];
+  const wtgt=wl.map(()=>2281000),wfin=wl.map(()=>1525904);
+  new Chart(document.getElementById('yoyChart'),{type:'line',data:{labels:wl,datasets:[
+    {label:'2027',data:wd27,borderColor:'#d40075',backgroundColor:'rgba(212,0,117,0.12)',borderWidth:3,pointRadius:2,fill:true,tension:0.2,spanGaps:false},
+    {label:'London 2026',data:wd26,borderColor:'#0093d3',backgroundColor:'transparent',borderDash:[5,4],borderWidth:2,pointRadius:0,fill:false,tension:0.2,spanGaps:false},
+    {label:'Target',data:wtgt,borderColor:'#f39c12',backgroundColor:'transparent',borderDash:[8,4],borderWidth:2,pointRadius:0,fill:false},
+    {label:'2026 Final',data:wfin,borderColor:'#6b8099',backgroundColor:'transparent',borderDash:[3,3],borderWidth:1,pointRadius:0,fill:false}
+  ]},options:{responsive:true,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{backgroundColor:'#0d1826',borderColor:'#1a4a7a',borderWidth:1,padding:10,callbacks:{label:(c)=>{if(c.parsed.y===null)return null;return' '+c.dataset.label+': £'+Math.round(c.parsed.y).toLocaleString('en-GB');}}}},scales:{x:{grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:18}},y:{min:0,grid:{color:'rgba(26,74,122,0.35)'},ticks:{color:'#6b8099',callback:(v)=>v>=1e6?'£'+(v/1e6).toFixed(1)+'m':'£'+(v/1000).toFixed(0)+'k'}}}}})
 
   const wks=["20 Feb","27 Feb","6 Mar","13 Mar","20 Mar","27 Mar","3 Apr","10 Apr","17 Apr","24 Apr","1 May","8 May","15 May","22 May","29 May","5 Jun","12 Jun","19 Jun","26 Jun","3 Jul","10 Jul","17 Jul","24 Jul","31 Jul","7 Aug","14 Aug","21 Aug★"];
   const w27=[45046,531848,26462,18125,3234,9308,null,null,53827,7792,null,8500,12543,null,33265,null,null,18773,null,128564,null,42175,62716,29941,34428,6402,42920];
@@ -472,6 +554,22 @@ function buildTradingReport(){
 
   document.getElementById('trd-output').textContent = out;
   try{localStorage.setItem('sc_mtarget_'+trdData.month, mt);}catch(e){}
+}
+
+
+function copyChartImage(canvasId,btnId){
+  const canvas=document.getElementById(canvasId);
+  const btn=document.getElementById(btnId);
+  const orig=btn.textContent;
+  canvas.toBlob(function(blob){
+    if(!blob){btn.textContent='Copy failed';setTimeout(()=>{btn.textContent=orig;},2000);return;}
+    if(navigator.clipboard&&window.ClipboardItem){
+      navigator.clipboard.write([new ClipboardItem({'image/png':blob})]).then(()=>{
+        btn.textContent='✓ Copied!';btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied');},2000);
+      }).catch(()=>{btn.textContent='Right-click chart to save';setTimeout(()=>{btn.textContent=orig;},3000);});
+    } else {btn.textContent='Right-click chart to save';setTimeout(()=>{btn.textContent=orig;},3000);}
+  },'image/png');
 }
 
 function copyTradingReport(){
