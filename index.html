@@ -169,6 +169,22 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
   </div>
 </div>
 
+<div class="sec-label">Weekly targets</div>
+<h2>Individual targets &mdash; Wk 30 (18-24 Sep 2026)</h2>
+<div class="trk-wrap-outer"><div class="trk-scroll" style="max-height:none"><table class="trktable" id="tgt-table">
+<thead><tr>
+  <th style="text-align:left">Person</th>
+  <th>Proposals<br><small style="color:#2ecc71;font-weight:400">Team target: 6</small></th>
+  <th>Discovery Calls<br><small style="color:#2ecc71;font-weight:400">Team target: 5</small></th>
+  <th>Weekly Rev Target<br><small style="color:var(--muted);font-weight:400">dynamic, auto-increases if missed</small></th>
+  <th>Weekly Actuals</th>
+  <th>Remaining</th>
+</tr></thead>
+<tbody id="tgt-body"></tbody>
+</table></div>
+<p class="trk-note">Weekly revenue target = (personal final target &minus; current season actuals) &divide; weeks remaining to show (24 Feb 2027). Recalculates automatically &mdash; missing a week increases the next week&rsquo;s target. Proposals &amp; discovery calls = deals entered that stage in HubSpot this week. Danny is lead gen only (no rev target).</p>
+
+
 <div class="sec-label">Stage movement</div>
 <h2>18-24 September 2026 (Wk 30)</h2>
 
@@ -468,20 +484,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
 </table>
 
 
-<div class="sec-label">Weekly targets</div>
-<h2>Individual targets &mdash; Wk 30 (18-24 Sep 2026)</h2>
-<div class="trk-wrap-outer"><div class="trk-scroll" style="max-height:none"><table class="trktable" id="tgt-table">
-<thead><tr>
-  <th style="text-align:left">Person</th>
-  <th>Proposals<br><small style="color:#2ecc71;font-weight:400">Team target: 6</small></th>
-  <th>Discovery Calls<br><small style="color:#2ecc71;font-weight:400">Team target: 5</small></th>
-  <th>Weekly Rev Target<br><small style="color:var(--muted);font-weight:400">dynamic, auto-increases if missed</small></th>
-  <th>Season Actuals</th>
-  <th>Remaining</th>
-</tr></thead>
-<tbody id="tgt-body"></tbody>
-</table></div>
-<p class="trk-note">Weekly revenue target = (personal final target &minus; current season actuals) &divide; weeks remaining to show (24 Feb 2027). Recalculates automatically &mdash; missing a week increases the next week&rsquo;s target. Proposals &amp; discovery calls = deals entered that stage in HubSpot this week. Danny is lead gen only (no rev target).</p>
+
 </div>
 
 <div class="sec-label">Team performance</div>
@@ -689,12 +692,12 @@ function copyTradingReport(){
   // finalTarget = revenue at time of target setting + additional target set
   // cwActuals = current season CW total from HubSpot (updated each report run)
   const owners = [
-    { name:'Kyle Hare',      proposals:1,  discoCalls:1,  finalTarget:710000, cwActuals:485247,  leadsOnly:false },
-    { name:'Cameron Read',   proposals:10, discoCalls:9,  finalTarget:501000, cwActuals:287606,  leadsOnly:false },
-    { name:'Christie Day',   proposals:0,  discoCalls:0,  finalTarget:688000, cwActuals:476332,  leadsOnly:false },
-    { name:'Nasreen Hussain',proposals:4,  discoCalls:0,  finalTarget:225000, cwActuals:0,       leadsOnly:false },
-    { name:'Gen Richards',   proposals:3,  discoCalls:0,  finalTarget:142800, cwActuals:22790,   leadsOnly:false },
-    { name:'Danny Day',      proposals:2,  discoCalls:2,  finalTarget:null,   cwActuals:null,    leadsOnly:true  },
+    { name:'Kyle Hare',      proposals:1,  discoCalls:1,  finalTarget:710000, seasonActuals:485247, weeklyRev:0,    leadsOnly:false },
+    { name:'Cameron Read',   proposals:10, discoCalls:9,  finalTarget:501000, seasonActuals:287606, weeklyRev:0,    leadsOnly:false },
+    { name:'Christie Day',   proposals:0,  discoCalls:0,  finalTarget:688000, seasonActuals:476332, weeklyRev:0,    leadsOnly:false },
+    { name:'Nasreen Hussain',proposals:4,  discoCalls:0,  finalTarget:225000, seasonActuals:0,      weeklyRev:0,    leadsOnly:false },
+    { name:'Gen Richards',   proposals:3,  discoCalls:0,  finalTarget:142800, seasonActuals:22790,  weeklyRev:0,    leadsOnly:false },
+    { name:'Danny Day',      proposals:2,  discoCalls:2,  finalTarget:null,   seasonActuals:null,   weeklyRev:null, leadsOnly:true  },
   ];
 
   function fmt(n){ return n == null ? '&mdash;' : '£' + Math.round(n).toLocaleString('en-GB'); }
@@ -714,14 +717,14 @@ function copyTradingReport(){
   tbody.innerHTML += '<tr style="border-top:1px solid var(--border)"><td class="trk-wk" style="color:var(--muted)">Team target</td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">6</span></td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">5</span></td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td></tr>';
 
   owners.forEach(function(o){
-    const remaining = o.finalTarget != null ? o.finalTarget - o.cwActuals : null;
+    const remaining = o.finalTarget != null ? o.finalTarget - o.seasonActuals : null;
     const weeklyTgt = (remaining != null && !o.leadsOnly) ? Math.round(remaining / weeksRemaining) : null;
     const row = '<tr>'
       + '<td class="trk-wk">'+o.name+'</td>'
       + cell(o.proposals, 6, o.leadsOnly, false)
       + cell(o.discoCalls, 5, o.leadsOnly, false)
       + (weeklyTgt != null ? '<td class="vf">'+fmt(weeklyTgt)+'<br><small style="color:var(--muted);font-weight:400">'+weeksRemaining+' wks left</small></td>' : '<td class="vf muted">&mdash;</td>')
-      + (o.cwActuals != null && !o.leadsOnly ? '<td class="vf green">'+fmt(o.cwActuals)+'</td>' : '<td class="vf muted">&mdash;</td>')
+      + (o.weeklyRev != null && !o.leadsOnly ? '<td class="vf '+(o.weeklyRev >= weeklyTgt ? 'green' : 'red')+'">'+fmt(o.weeklyRev)+'</td>' : '<td class="vf muted">&mdash;</td>')
       + (remaining != null && !o.leadsOnly ? '<td class="vf amber">'+fmt(remaining)+'</td>' : '<td class="vf muted">&mdash;</td>')
       + '</tr>';
     tbody.innerHTML += row;
