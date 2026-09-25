@@ -467,6 +467,23 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
   </tbody>
 </table>
 
+
+<div class="sec-label">Weekly targets</div>
+<h2>Individual targets &mdash; Wk 30 (18-24 Sep 2026)</h2>
+<div class="trk-wrap-outer"><div class="trk-scroll" style="max-height:none"><table class="trktable" id="tgt-table">
+<thead><tr>
+  <th style="text-align:left">Person</th>
+  <th>Proposals<br><small style="color:#2ecc71;font-weight:400">Team target: 6</small></th>
+  <th>Discovery Calls<br><small style="color:#2ecc71;font-weight:400">Team target: 5</small></th>
+  <th>Weekly Rev Target<br><small style="color:var(--muted);font-weight:400">dynamic, auto-increases if missed</small></th>
+  <th>Season Actuals</th>
+  <th>Remaining</th>
+</tr></thead>
+<tbody id="tgt-body"></tbody>
+</table></div>
+<p class="trk-note">Weekly revenue target = (personal final target &minus; current season actuals) &divide; weeks remaining to show (24 Feb 2027). Recalculates automatically &mdash; missing a week increases the next week&rsquo;s target. Proposals &amp; discovery calls = deals entered that stage in HubSpot this week. Danny is lead gen only (no rev target).</p>
+</div>
+
 <div class="sec-label">Team performance</div>
 <h2>Pipeline by owner (last full pull)</h2>
 <div class="owner-grid">
@@ -536,6 +553,18 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
       <tr><td class="sn"><span class="pill autumn">Autumn Close</span></td><td class="sc">2 deals</td><td class="sv hot">&#163;20,000</td></tr>
       <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">4 deals</td><td class="sv warm">&#163;16,437</td></tr>
       <tr><td class="sn"><span class="pill eng">Engagement</span></td><td class="sc">7 deals</td><td class="sv warm">&#163;5,000</td></tr>
+    </table>
+  </div>
+  <div class="ocard">
+    <div class="ocard-hd">
+      <div><div class="oname">Nasreen Hussain</div><div class="ototals"><strong>New this season &nbsp;&#183;&nbsp; Building pipeline</strong></div></div>
+      <div class="obadges"><span class="badge grey">0 CLOSED WON</span><span class="badge blue">NEW</span></div>
+    </div>
+    <table class="ostage">
+      <tr><td class="sn"><span class="pill won">Closed Won</span></td><td class="sc">0 deals</td><td class="sv muted">&#163;0</td></tr>
+      <tr><td class="sn"><span class="pill prop">Proposal Sent</span></td><td class="sc">4 active</td><td class="sv warm">&#8212;</td></tr>
+      <tr><td class="sn"><span class="pill disc">Discovery Call</span></td><td class="sc">&#8212;</td><td class="sv muted">&#8212;</td></tr>
+      <tr><td class="sn"><span class="pill cold">Cold Outreach</span></td><td class="sc">Active</td><td class="sv muted">unpriced</td></tr>
     </table>
   </div>
   <div class="ocard" style="opacity:.7;">
@@ -648,6 +677,61 @@ function copyTradingReport(){
   buildTradingReport();
   document.getElementById('trd-mtarget').addEventListener('input', buildTradingReport);
   document.getElementById('trd-eom').addEventListener('input', buildTradingReport);
+})();
+
+
+// ── Weekly Targets Table ───────────────────────────────────────────────────
+(function(){
+  const showDate = new Date('2027-02-24');
+  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+  const weeksRemaining = Math.max(1, Math.ceil((showDate - new Date()) / msPerWeek));
+
+  // finalTarget = revenue at time of target setting + additional target set
+  // cwActuals = current season CW total from HubSpot (updated each report run)
+  const owners = [
+    { name:'Kyle Hare',      proposals:1,  discoCalls:1,  finalTarget:710000, cwActuals:485247,  leadsOnly:false },
+    { name:'Cameron Read',   proposals:10, discoCalls:9,  finalTarget:501000, cwActuals:287606,  leadsOnly:false },
+    { name:'Christie Day',   proposals:0,  discoCalls:0,  finalTarget:688000, cwActuals:476332,  leadsOnly:false },
+    { name:'Nasreen Hussain',proposals:4,  discoCalls:0,  finalTarget:225000, cwActuals:0,       leadsOnly:false },
+    { name:'Gen Richards',   proposals:3,  discoCalls:0,  finalTarget:142800, cwActuals:22790,   leadsOnly:false },
+    { name:'Danny Day',      proposals:2,  discoCalls:2,  finalTarget:null,   cwActuals:null,    leadsOnly:true  },
+  ];
+
+  function fmt(n){ return n == null ? '&mdash;' : '£' + Math.round(n).toLocaleString('en-GB'); }
+  function cell(val, target, leadsOnly, isRev){
+    if(leadsOnly && isRev) return '<td class="vf muted">&mdash;</td>';
+    if(val == null) return '<td class="vf muted">&mdash;</td>';
+    if(isRev) return '<td class="vf green">'+fmt(val)+'</td>';
+    const ok = val >= target;
+    const cls = ok ? 'trk-g' : 'trk-r';
+    return '<td><span class="'+cls+'">'+(val != null ? val : '&mdash;')+'</span></td>';
+  }
+
+  const tbody = document.getElementById('tgt-body');
+  if(!tbody) return;
+
+  // Header / team target row
+  tbody.innerHTML += '<tr style="border-top:1px solid var(--border)"><td class="trk-wk" style="color:var(--muted)">Team target</td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">6</span></td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">5</span></td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td></tr>';
+
+  owners.forEach(function(o){
+    const remaining = o.finalTarget != null ? o.finalTarget - o.cwActuals : null;
+    const weeklyTgt = (remaining != null && !o.leadsOnly) ? Math.round(remaining / weeksRemaining) : null;
+    const row = '<tr>'
+      + '<td class="trk-wk">'+o.name+'</td>'
+      + cell(o.proposals, 6, o.leadsOnly, false)
+      + cell(o.discoCalls, 5, o.leadsOnly, false)
+      + (weeklyTgt != null ? '<td class="vf">'+fmt(weeklyTgt)+'<br><small style="color:var(--muted);font-weight:400">'+weeksRemaining+' wks left</small></td>' : '<td class="vf muted">&mdash;</td>')
+      + (o.cwActuals != null && !o.leadsOnly ? '<td class="vf green">'+fmt(o.cwActuals)+'</td>' : '<td class="vf muted">&mdash;</td>')
+      + (remaining != null && !o.leadsOnly ? '<td class="vf amber">'+fmt(remaining)+'</td>' : '<td class="vf muted">&mdash;</td>')
+      + '</tr>';
+    tbody.innerHTML += row;
+  });
+
+  // Weeks remaining note
+  const note = document.querySelector('#tgt-table + p.trk-note') || document.querySelector('.trk-note');
+  // append weeks remaining to note
+  const noteEl = tbody.closest('.trk-wrap-outer') ? tbody.closest('.trk-wrap-outer').querySelector('.trk-note') : null;
+  if(noteEl) noteEl.innerHTML += ' <strong>'+weeksRemaining+' weeks remaining to show.</strong>';
 })();
 
 </script>
