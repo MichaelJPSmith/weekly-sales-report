@@ -15,7 +15,7 @@ header{border-bottom:1px solid var(--border);padding:1.5rem 0 1.2rem;margin-bott
 .run-date{font-size:.75rem;color:var(--muted)}
 .sec-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);margin-bottom:.4rem}
 h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:1.2rem;color:#fff}
-.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.8rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem}
 .kpi{background:var(--navy);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem}
 .kpi-val{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;font-weight:800;line-height:1;margin-bottom:.3rem}
 .kpi-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
@@ -151,21 +151,18 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
 <h2>&#163;1,362,767 confirmed - 4 new wins this week, &#163;45,455 WTD</h2>
 <div class="kpi-grid">
   <div class="kpi"><div class="kpi-val" style="color:#2ecc71;">&#163;1,362,767</div><div class="kpi-label">Closed Won (115 deals)</div></div>
-  <div class="kpi"><div class="kpi-val" style="color:#f39c12;">&#163;610,477</div><div class="kpi-label">Hot pipeline (approx.)</div></div>
   <div class="kpi"><div class="kpi-val" style="color:#0093d3;">661</div><div class="kpi-label">Total deals in pipeline</div></div>
   <div class="kpi"><div class="kpi-val" style="color:#c9a7ff;">4</div><div class="kpi-label">Closes this week</div></div>
 </div>
 
 <div class="tbar">
-  <div class="tbar-row"><span style="font-weight:600;color:#fff;">Progress to &#163;2,281,000 target</span><span style="color:var(--muted);font-size:.8rem;">&#163;307,756 gap if hot pipeline converts in full</span></div>
+  <div class="tbar-row"><span style="font-weight:600;color:#fff;">Progress to &#163;2,281,000 target</span><span style="color:var(--muted);font-size:.8rem;">&#163;918,233 still to close</span></div>
   <div class="tbar-track">
     <div class="tbar-fill-pink" style="width:59.7%"></div>
-    <div class="tbar-fill-amber" style="width:26.8%"></div>
   </div>
   <div class="tbar-meta">
     <span><span style="color:#2ecc71;">&#9632;</span> Confirmed 59.7% (&#163;1,362,767)</span>
-    <span><span style="color:#f39c12;">&#9632;</span> Hot pipeline +26.8% (&#163;610,477)</span>
-    <span>Combined 86.5% - &#163;307,756 still to find</span>
+    <span>&#163;918,233 to go by show day (24 Feb 2027)</span>
   </div>
 </div>
 
@@ -176,13 +173,14 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
   <th style="text-align:left">Person</th>
   <th>Proposals<br><small style="color:#2ecc71;font-weight:400">Team target: 6</small></th>
   <th>Discovery Calls<br><small style="color:#2ecc71;font-weight:400">Team target: 5</small></th>
+  <th>Engagement (Responded)<br><small style="color:var(--muted);font-weight:400">No target - tracked only</small></th>
   <th>Weekly Rev Target<br><small style="color:var(--muted);font-weight:400">dynamic, auto-increases if missed</small></th>
   <th>Weekly Actuals</th>
   <th>Remaining</th>
 </tr></thead>
 <tbody id="tgt-body"></tbody>
 </table></div>
-<p class="trk-note">Weekly revenue target = (personal final target &minus; current season actuals) &divide; weeks remaining to show (24 Feb 2027). Recalculates automatically &mdash; missing a week increases the next week&rsquo;s target. Proposals &amp; discovery calls = deals entered that stage in HubSpot this week. Danny is lead gen only (no rev target).</p>
+<p class="trk-note">Weekly revenue target = (personal final target &minus; current season actuals) &divide; weeks remaining to show (24 Feb 2027). Recalculates automatically &mdash; missing a week increases the next week&rsquo;s target. Proposals, discovery calls &amp; engagement = deals whose &ldquo;date entered stage&rdquo; in HubSpot falls inside this Fri-Thu week (not last-modified). Danny is lead gen only (no rev target).</p>
 
 
 <div class="sec-label">Stage movement</div>
@@ -198,66 +196,65 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
   </table>
 </div>
 <div class="sblock">
-  <div class="sblock-hd"><span class="pill prop">Proposal Sent</span><span class="badge" style="background:rgba(147,112,219,.15);color:#9370db;">29 PROPOSAL DEALS UPDATED THIS WEEK</span></div>
+  <div class="sblock-hd"><span class="pill prop">Proposal Sent</span><span class="badge" style="background:rgba(147,112,219,.15);color:#9370db;">11 PROPOSALS ENTERED THIS WEEK</span></div>
   <table class="dtable">
     <tr><td class="dn">SCE27 - Interface Force Measurements</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&#163;7,137</td></tr>
-    <tr><td class="dn">SCE27 - Kratos Communications (Smallsat)</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&#163;9,216</td></tr>
-    <tr><td class="dn">SCE27 - HBK (Hottinger, Bruel &amp; Kjaer)</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&#163;9,137</td></tr>
-    <tr><td class="dn">Aerospacelab</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&#163;12,500</td></tr>
-    <tr><td class="dn">SCE27 - Aon</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&#163;20,000</td></tr>
-    <tr><td class="dn">SCE27 - Roke</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;5,058</td></tr>
-    <tr><td class="dn">Anywaves</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;7,500</td></tr>
-    <tr><td class="dn">SCE27 - Cobham Satcom</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;7,037</td></tr>
-    <tr><td class="dn">SCE27 - EnerSys ABSL Space</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;16,000</td></tr>
-    <tr><td class="dn">SCE27 - Mars Space</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;5,054</td></tr>
-    <tr><td class="dn">SCE27 - PROFEN GROUP</td><td class="do">Kyle Hare</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">Anduril Industries</td><td class="do">Christie Day</td><td class="dt">15 Oct</td><td class="dv">&#163;50,000</td></tr>
-    <tr><td class="dn">SCE27 - Vlada Republike Slovenije</td><td class="do">Gen Richards</td><td class="dt">10 Oct</td><td class="dv">&#163;5,000</td></tr>
-    <tr><td class="dn">SCE27 - Space Denmark</td><td class="do">Gen Richards</td><td class="dt">15 Oct</td><td class="dv">&#163;5,000</td></tr>
-    <tr><td class="dn">SCE27 - CCI Paris Ile-de-France</td><td class="do">Gen Richards</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Aerospace Valley</td><td class="do">Nasreen Hussain</td><td class="dt">11 Oct</td><td class="dv">&#163;16,107</td></tr>
-    <tr><td class="dn">SCE27 - Sophia Space</td><td class="do">Nasreen Hussain</td><td class="dt">10 Oct</td><td class="dv">&#163;10,000</td></tr>
-    <tr><td class="dn">SCE27 - Pillsbury Winthrop Shaw Pittman</td><td class="do">Nasreen Hussain</td><td class="dt">11 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - YottaVolt</td><td class="do">Nasreen Hussain</td><td class="dt">10 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Kineis</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Azercosmos</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - NanoPing</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Luxembourg Pavilion</td><td class="do">Nasreen Hussain</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Vexhungary</td><td class="do">Nasreen Hussain</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Uzbekistan Pavilion</td><td class="do">Nasreen Hussain</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Agencia Espacial Brasileira</td><td class="do">Nasreen Hussain</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - NLSA</td><td class="do">Nasreen Hussain</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">Nicomatic Ltd</td><td class="do">Danny Day</td><td class="dt">14 Oct</td><td class="dv">&#163;7,137</td></tr>
-    <tr><td class="dn">NASA Jet Propulsion Laboratory</td><td class="do">Danny Day</td><td class="dt">11 Oct</td><td class="dv">&#163;10,000</td></tr>
+    <tr><td class="dn">Anywaves</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;7,500</td></tr>
+    <tr><td class="dn">SCE27 - EnerSys ABSL Space</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&#163;16,000</td></tr>
+    <tr><td class="dn">SCE27 - Mars Space</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;5,054</td></tr>
+    <tr><td class="dn">SCE27 - Luxembourg Pavilion</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Vexhungary</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Uzbekistan Pavilion</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Agencia Espacial Brasileira</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - NLSA</td><td class="do">Nasreen Hussain</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Kineis</td><td class="do">Nasreen Hussain</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Azercosmos</td><td class="do">Nasreen Hussain</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
   </table>
 </div>
 <div class="sblock">
-  <div class="sblock-hd"><span class="pill disc">Discovery Call Booked</span><span class="badge blue">17 DISCO DEALS UPDATED THIS WEEK</span></div>
+  <div class="sblock-hd"><span class="pill disc">Discovery Call Booked</span><span class="badge blue">8 DISCO CALLS ENTERED THIS WEEK</span></div>
   <table class="dtable">
-    <tr><td class="dn">SCE27 - Isar Aerospace</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
     <tr><td class="dn">SCE27 - WPA SECURE</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Leaf Space srl (Smallsat)</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;7,500</td></tr>
-    <tr><td class="dn">SCE27 - Maury Microwave</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;5,000</td></tr>
+    <tr><td class="dn">SCE27 - Maury Microwave</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;5,000</td></tr>
+    <tr><td class="dn">SCE27 - SES Space &amp; Defence (since moved back to Engagement)</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Eycore</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - KP Labs</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
     <tr><td class="dn">SCE27 - IngeniArs S.r.l.</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - KP Labs</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Eycore</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Studio 3T</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">Berlin Space Technologies</td><td class="do">Cameron Read</td><td class="dt">16 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27- Beyond Gravity</td><td class="do">Kyle Hare</td><td class="dt">9 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Boeing</td><td class="do">Kyle Hare</td><td class="dt">11 Oct</td><td class="dv">&#163;15,000</td></tr>
-    <tr><td class="dn">SCE27 - PAVE Space</td><td class="do">Nasreen Hussain</td><td class="dt">10 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Molex</td><td class="do">Nasreen Hussain</td><td class="dt">10 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Skyfall</td><td class="do">Nasreen Hussain</td><td class="dt">10 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Saxavord</td><td class="do">Christie Day</td><td class="dt">10 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - Hughes</td><td class="do">Danny Day</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
-    <tr><td class="dn">SCE27 - L3Harris Technologies</td><td class="do">Danny Day</td><td class="dt">10 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">Berlin Space Technologies</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Hughes</td><td class="do">Danny Day</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+  </table>
+</div>
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill eng">Engagement (Responded)</span><span class="badge blue">12 DEALS ENTERED THIS WEEK</span></div>
+  <table class="dtable">
+    <tr><td class="dn">SCE27 - Lambda-X</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;6,427</td></tr>
+    <tr><td class="dn">SCE27 - Indra UK</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;12,000</td></tr>
+    <tr><td class="dn">SCE27 - Connect2Cleanrooms (Non-Rebook)</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;9,355</td></tr>
+    <tr><td class="dn">SCE27 - JPO Solutions</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Tesat</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Data Galaxy</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - ENERSENS</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">Berlin Space Technologies</td><td class="do">Cameron Read</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - COMSPOC</td><td class="do">Cameron Read</td><td class="dt">14 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - SES Space &amp; Defence</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Quantum Space</td><td class="do">Danny Day</td><td class="dt">13 Oct</td><td class="dv">&mdash;</td></tr>
+    <tr><td class="dn">SCE27 - Denchi Group</td><td class="do">Danny Day</td><td class="dt">12 Oct</td><td class="dv">&mdash;</td></tr>
+  </table>
+</div>
+<div class="sblock">
+  <div class="sblock-hd"><span class="pill neg">Contract Out</span><span class="badge amber">4 DEALS ENTERED THIS WEEK</span></div>
+  <table class="dtable">
+    <tr><td class="dn">SCE27 - Starion Group (Non-rebook)</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;16,272</td></tr>
+    <tr><td class="dn">SCE27 - Scotland Pavilion (now Closed Won)</td><td class="do">Christie Day</td><td class="dt">14 Oct</td><td class="dv">&#163;21,348</td></tr>
+    <tr><td class="dn">SCE27 - SpaceComputer Tech Zone Upgrade (now Closed Won)</td><td class="do">Cameron Read</td><td class="dt">13 Oct</td><td class="dv">&#163;5,000</td></tr>
+    <tr><td class="dn">SCE27 - Heliofold US (now Closed Won)</td><td class="do">Cameron Read</td><td class="dt">15 Oct</td><td class="dv">&#163;3,000</td></tr>
   </table>
 </div>
 <div class="notice warn">
   <strong>BOC Group (deal 26502057) - editorial correction applied:</strong> BOC originally closed at &#163;11,474 on 25 Aug (Wk 26), then upgraded and re-closed at &#163;17,948 on 8 Sep (Wk 28). HubSpot shows all &#163;17,948 on Sep 8. This report manually splits revenue as: &#163;11,474 in Wk 26 (Aug) and &#163;6,474 in Wk 28 (Sep). August actuals corrected to &#163;113,691 (+&#163;11,474). Cumulative total unchanged at &#163;1,362,767.
 </div>
 <div class="notice">
-  <strong>Stage movement note:</strong> 4 Closed Won this week worth &#163;45,455 - Scotland Pavilion (&#163;21,348) and Southern Economic Development Council (&#163;16,107) for Christie Day, plus two smaller Cameron Read wins. UKRI (&#163;35,580, Christie) closed on Fri 16 Oct and lands in Wk 34. Proposal and disco counts use deals in those stages modified since Fri 9 Oct (Cameron 10 proposals / 9 discos, Nasreen 12 / 3), so bulk edits can inflate them. Pipeline data as of 16 Oct 2026.
+  <strong>Stage movement note:</strong> Every count above uses HubSpot&rsquo;s &ldquo;date entered stage&rdquo; for the week Fri 9 Oct - Thu 15 Oct (UK time), not last-modified date. 4 Closed Won worth &#163;45,455 (Christie &#163;37,455, Cameron &#163;8,000). Cameron entered 4 proposals, 7 discos and 10 engagement deals; Nasreen entered 7 proposals. UKRI (&#163;35,580, Christie) entered Closed Won at 09:33 on Fri 16 Oct per HubSpot, so it lands in Wk 34. Pipeline data as of 16 Oct 2026.
 </div>
 
 <div class="sec-label">Period comparisons</div>
@@ -269,7 +266,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
     <div class="pk-row">
       <div class="pk-col"><div class="pk-year">2027</div><div class="pk-val">&#163;45,455</div></div>
       <div class="pk-col"><div class="pk-year">2026 equiv.</div><div class="pk-val muted">&#163;36,412</div></div>
-      <div class="pk-col right"><div class="pk-change green">+&#163;9,043</div><div class="pk-pct green">+25%</div><div class="pk-note">Best week since mid-September. Christie delivered &#163;37,455 of it, and 29 proposal deals and 17 disco deals were touched across the team.</div></div>
+      <div class="pk-col right"><div class="pk-change green">+&#163;9,043</div><div class="pk-pct green">+25%</div><div class="pk-note">Best week since mid-September. Christie delivered &#163;37,455 of it, plus 11 proposals and 8 discovery calls entered those stages.</div></div>
     </div>
   </div>
 
@@ -278,7 +275,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
     <div class="pk-row">
       <div class="pk-col"><div class="pk-year">2027</div><div class="pk-val">&#163;70,586</div></div>
       <div class="pk-col"><div class="pk-year">2026 equiv.</div><div class="pk-val muted">&#163;80,709</div></div>
-      <div class="pk-col right"><div class="pk-change red">-&#163;10,123</div><div class="pk-pct red">-13%</div><div class="pk-note">Slightly behind last year at this point. Budget for Oct is &#163;212,715 - &#163;70,586 so far (33%). Hot pipeline of &#163;610,477 needs to convert in the second half.</div></div>
+      <div class="pk-col right"><div class="pk-change red">-&#163;10,123</div><div class="pk-pct red">-13%</div><div class="pk-note">Slightly behind last year at this point. Budget for Oct is &#163;212,715 - &#163;70,586 so far (33%). &#163;142,129 still needed to hit budget.</div></div>
     </div>
   </div>
 
@@ -287,7 +284,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
     <div class="pk-row">
       <div class="pk-col"><div class="pk-year">2027</div><div class="pk-val">&#163;1,362,767</div></div>
       <div class="pk-col"><div class="pk-year">2026 equiv.</div><div class="pk-val muted">&#163;772,800</div></div>
-      <div class="pk-col right"><div class="pk-change green">+&#163;589,967</div><div class="pk-pct green">+76%</div><div class="pk-note">Still well ahead of London 2026 pace. Hot pipeline at &#163;610,477 supports continued growth.</div></div>
+      <div class="pk-col right"><div class="pk-change green">+&#163;589,967</div><div class="pk-pct green">+76%</div><div class="pk-note">Still well ahead of London 2026 pace.</div></div>
     </div>
   </div>
 
@@ -317,7 +314,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem 0;margin-top:3rem;displ
   <div class="ykpi">
     <div class="yk-label">Still to close</div>
     <div class="yk-val" style="color:var(--amber);">&#163;918,233</div>
-    <div class="yk-sub">To hit &#163;2.28m target. Hot pipeline covers &#163;610,477 of that - leaving &#163;307,756 still to find.</div>
+    <div class="yk-sub">Needed to hit the &#163;2.28m target by show day. 2026 added &#163;753k over the same stretch.</div>
   </div>
 </div>
 
@@ -679,12 +676,12 @@ function copyTradingReport(){
   // finalTarget = revenue at time of target setting + additional target set
   // cwActuals = current season CW total from HubSpot (updated each report run)
   const owners = [
-    { name:'Kyle Hare',     proposals:1,  discoCalls:2,  finalTarget:710000, seasonActuals:522340, weeklyRev:0, leadsOnly:false },
-    { name:'Cameron Read',  proposals:10,  discoCalls:9,  finalTarget:501000, seasonActuals:301950, weeklyRev:8000, leadsOnly:false },
-    { name:'Christie Day',  proposals:1,  discoCalls:1,  finalTarget:688000, seasonActuals:527161, weeklyRev:37455, leadsOnly:false },
-    { name:'Nasreen Hussain',proposals:12,  discoCalls:3,  finalTarget:225000, seasonActuals:0, weeklyRev:0, leadsOnly:false },
-    { name:'Gen Richards',  proposals:3,  discoCalls:0,  finalTarget:142800, seasonActuals:22790, weeklyRev:0, leadsOnly:false },
-    { name:'Danny Day',     proposals:2,  discoCalls:2,  finalTarget:null, seasonActuals:null, weeklyRev:null, leadsOnly:true },
+    { name:'Kyle Hare',     proposals:0,  discoCalls:0,  engagement:0,  finalTarget:710000, seasonActuals:522340, weeklyRev:0, leadsOnly:false },
+    { name:'Cameron Read',  proposals:4,  discoCalls:7,  engagement:10,  finalTarget:501000, seasonActuals:301950, weeklyRev:8000, leadsOnly:false },
+    { name:'Christie Day',  proposals:0,  discoCalls:0,  engagement:0,  finalTarget:688000, seasonActuals:527161, weeklyRev:37455, leadsOnly:false },
+    { name:'Nasreen Hussain',proposals:7,  discoCalls:0,  engagement:0,  finalTarget:225000, seasonActuals:0, weeklyRev:0, leadsOnly:false },
+    { name:'Gen Richards',  proposals:0,  discoCalls:0,  engagement:0,  finalTarget:142800, seasonActuals:22790, weeklyRev:0, leadsOnly:false },
+    { name:'Danny Day',     proposals:0,  discoCalls:1,  engagement:2,  finalTarget:null, seasonActuals:null, weeklyRev:null, leadsOnly:true },
   ];
 
   function fmt(n){ return n == null ? '&mdash;' : '£' + Math.round(n).toLocaleString('en-GB'); }
@@ -701,7 +698,7 @@ function copyTradingReport(){
   if(!tbody) return;
 
   // Header / team target row
-  tbody.innerHTML += '<tr style="border-top:1px solid var(--border)"><td class="trk-wk" style="color:var(--muted)">Team target</td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">6</span></td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">5</span></td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td></tr>';
+  tbody.innerHTML += '<tr style="border-top:1px solid var(--border)"><td class="trk-wk" style="color:var(--muted)">Team target</td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">6</span></td><td style="text-align:right"><span style="color:#2ecc71;font-weight:700">5</span></td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td><td style="text-align:right;color:var(--muted)">&mdash;</td></tr>';
 
   owners.forEach(function(o){
     const remaining = o.finalTarget != null ? o.finalTarget - o.seasonActuals : null;
@@ -710,6 +707,7 @@ function copyTradingReport(){
       + '<td class="trk-wk">'+o.name+'</td>'
       + cell(o.proposals, 6, o.leadsOnly, false)
       + cell(o.discoCalls, 5, o.leadsOnly, false)
+      + '<td style="text-align:right;font-weight:700;color:#0093d3">'+o.engagement+'</td>'
       + (weeklyTgt != null ? '<td class="vf">'+fmt(weeklyTgt)+'<br><small style="color:var(--muted);font-weight:400">'+weeksRemaining+' wks left</small></td>' : '<td class="vf muted">&mdash;</td>')
       + (o.weeklyRev != null && !o.leadsOnly ? '<td class="vf '+(o.weeklyRev >= weeklyTgt ? 'green' : 'red')+'">'+fmt(o.weeklyRev)+'</td>' : '<td class="vf muted">&mdash;</td>')
       + (remaining != null && !o.leadsOnly ? '<td class="vf amber">'+fmt(remaining)+'</td>' : '<td class="vf muted">&mdash;</td>')
